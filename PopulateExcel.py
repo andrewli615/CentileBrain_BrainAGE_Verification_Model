@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -27,13 +28,24 @@ ROOT = Path(__file__).resolve().parent
 ETHNORACIAL_DIR = ROOT / "ethnoracial_data"
 
 # Edit these keywords when you want to run one dataset without command-line args.
-DEFAULT_DATASET = "self_black"
+# Change this to a specific folder, for example "self_black" or "genetic_AFR".
+DEFAULT_DATASET = "genetic_AFR"
 DEFAULT_CSV_SUBFOLDER = ""
 DEFAULT_WRITE_FILES = False
 GENERATE_SUBJECT_ID_IF_MISSING = True
-ALL_DATASET_PREFIX = "self_"
+# Change this tuple to ("self_",), ("genetic_",), or ("self_", "genetic_").
+ALL_DATASET_PREFIXES = ("genetic_",)
+CREATE_MISSING_TEMPLATES_FROM_REUSABLE = True
+TEMPLATE_AGE_GROUPS = ("<=40", ">40")
+REUSABLE_TEMPLATE_FILES = {
+    "male": "brainAGE_template_Male_REUSABLE.xlsx",
+    "female": "brainAGE_template_Female_REUSABLE.xlsx",
+}
 STRICT_ROW_KEY_MATCH = True
 ALLOW_ROW_ORDER_MISMATCH_DATASETS = {"self_chinese"}
+SORT_INPUT_ROWS_BY_COLUMNS = {
+    "self_chinese": ("age",),
+}
 
 SEX_KEYWORDS = ("male", "female")
 MODALITY_ORDER = ("thickness", "area", "volume")
@@ -151,6 +163,42 @@ def find_templates(template_dir: Path) -> list[TemplateTarget]:
     return targets
 
 
+def reusable_template_path(sex: str) -> Path:
+    return ETHNORACIAL_DIR / REUSABLE_TEMPLATE_FILES[sex]
+
+
+def expected_template_name(sex: str, age_group: str) -> str:
+    sex_label = "Male" if sex == "male" else "Female"
+    return f"brainAGE_template_{sex_label}{age_group}.xlsx"
+
+
+def find_or_create_templates(dataset_dir: Path, write_files: bool) -> list[TemplateTarget]:
+    targets = find_templates(dataset_dir)
+    existing = {(target.sex, target.age_group) for target in targets}
+
+    if not CREATE_MISSING_TEMPLATES_FROM_REUSABLE:
+        return targets
+
+    for sex in SEX_KEYWORDS:
+        source = reusable_template_path(sex)
+        if not source.exists():
+            continue
+        for age_group in TEMPLATE_AGE_GROUPS:
+            key = (sex, age_group)
+            if key in existing:
+                continue
+
+            destination = dataset_dir / expected_template_name(sex, age_group)
+            if write_files:
+                shutil.copy2(source, destination)
+                targets.append(TemplateTarget(path=destination, sex=sex, age_group=age_group))
+            else:
+                targets.append(TemplateTarget(path=source, sex=sex, age_group=age_group))
+            existing.add(key)
+
+    return sorted(targets, key=lambda target: (target.sex, target.age_group, target.path.name))
+
+
 def make_row_key(df: pd.DataFrame) -> pd.Series:
     key_columns = [col for col in ("SubjectID", "SITE", "age") if col in df.columns]
     if not key_columns:
@@ -158,13 +206,25 @@ def make_row_key(df: pd.DataFrame) -> pd.Series:
     return df[key_columns].astype(str).agg("|".join, axis=1)
 
 
-def load_sex_data(csvs_for_sex: dict[str, Path], strict_row_key_match: bool) -> pd.DataFrame:
+def sort_frame(frame: pd.DataFrame, sort_columns: tuple[str, ...]) -> pd.DataFrame:
+    available_columns = [column for column in sort_columns if column in frame.columns]
+    if not available_columns:
+        return frame.reset_index(drop=True)
+    return frame.sort_values(available_columns, kind="mergesort").reset_index(drop=True)
+
+
+def load_sex_data(
+    csvs_for_sex: dict[str, Path],
+    strict_row_key_match: bool,
+    sort_columns: tuple[str, ...] = (),
+) -> pd.DataFrame:
     missing = [modality for modality in MODALITY_ORDER if modality not in csvs_for_sex]
     if missing:
         raise ValueError(f"Missing required CSV modality/modalities: {', '.join(missing)}")
 
     frames: dict[str, pd.DataFrame] = {
-        modality: pd.read_csv(csvs_for_sex[modality]) for modality in MODALITY_ORDER
+        modality: sort_frame(pd.read_csv(csvs_for_sex[modality]), sort_columns)
+        for modality in MODALITY_ORDER
     }
     base = pd.DataFrame(index=frames["thickness"].index)
     base_key = make_row_key(frames["thickness"])
@@ -302,7 +362,7 @@ def run_dataset(dataset: str, csv_subfolder: str, write_files: bool, strict_row_
     csv_dir = dataset_dir / csv_subfolder if csv_subfolder else dataset_dir
     template_dir = dataset_dir
     classified = classify_csvs(csv_dir)
-    targets = find_templates(template_dir)
+    targets = find_or_create_templates(template_dir, write_files)
 
     if not targets:
         print(f"{dataset}: no brainAGE_template_*.xlsx files found; nothing to populate.")
@@ -315,15 +375,16 @@ def run_dataset(dataset: str, csv_subfolder: str, write_files: bool, strict_row_
     dataset_strict_row_key_match = (
         strict_row_key_match and dataset not in ALLOW_ROW_ORDER_MISMATCH_DATASETS
     )
+    sort_columns = SORT_INPUT_ROWS_BY_COLUMNS.get(dataset, ())
 
     data_by_sex: dict[str, pd.DataFrame] = {}
     for target in targets:
         if target.sex not in data_by_sex:
             data_by_sex[target.sex] = load_sex_data(
-                classified[target.sex], dataset_strict_row_key_match
+                classified[target.sex], dataset_strict_row_key_match, sort_columns
             )
         count = populate_template(target, data_by_sex[target.sex], write_files)
-        print(f"  {target.path.name}: {count} rows")
+        print(f"  {expected_template_name(target.sex, target.age_group)}: {count} rows")
 
 
 def parse_args() -> argparse.Namespace:
@@ -333,7 +394,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--all",
         action="store_true",
-        help=f"Process every {ALL_DATASET_PREFIX} ethnoracial_data subfolder that has templates.",
+        help=f"Process ethnoracial_data subfolders whose names start with {ALL_DATASET_PREFIXES}.",
     )
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--write", action="store_true", help="Write populated rows into the template workbooks.")
@@ -353,7 +414,7 @@ def main() -> None:
 
     if args.all:
         for dataset_dir in sorted(path for path in ETHNORACIAL_DIR.iterdir() if path.is_dir()):
-            if dataset_dir.name.startswith(ALL_DATASET_PREFIX) and list(dataset_dir.glob("brainAGE_template_*.xlsx")):
+            if dataset_dir.name.startswith(ALL_DATASET_PREFIXES):
                 run_dataset(dataset_dir.name, "", write_files, strict_row_key_match)
     else:
         run_dataset(args.dataset, args.csv_subfolder, write_files, strict_row_key_match)
