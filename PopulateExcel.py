@@ -28,13 +28,13 @@ ROOT = Path(__file__).resolve().parent
 ETHNORACIAL_DIR = ROOT / "ethnoracial_data"
 
 # Edit these keywords when you want to run one dataset without command-line args.
-# Change this to a specific folder, for example "self_black" or "genetic_AFR".
-DEFAULT_DATASET = "genetic_AFR"
+# Change this to a specific folder, for example "self_black" or "self_chinese".
+DEFAULT_DATASET = "self_chinese"
 DEFAULT_CSV_SUBFOLDER = ""
 DEFAULT_WRITE_FILES = False
 GENERATE_SUBJECT_ID_IF_MISSING = True
 # Change this tuple to ("self_",), ("genetic_",), or ("self_", "genetic_").
-ALL_DATASET_PREFIXES = ("genetic_",)
+ALL_DATASET_PREFIXES = ("self_",)
 CREATE_MISSING_TEMPLATES_FROM_REUSABLE = True
 TEMPLATE_AGE_GROUPS = ("<=40", ">40")
 REUSABLE_TEMPLATE_FILES = {
