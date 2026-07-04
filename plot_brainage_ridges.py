@@ -27,13 +27,17 @@ DATASET_LABELS = {
     "self_white": "White",
 }
 
-ROW_ORDER = ["Training", "Black", "Chilean", "Chinese", "Mexican", "South Asian", "Turkish", "White"]
+ROW_ORDER = ["Training", "Black", "Chilean", "Chinese", "Mexican", "South Asian", "Turkish"]
 PANEL_ORDER = [
     ("Female", "5-40"),
     ("Female", "40-90"),
     ("Male", "5-40"),
     ("Male", "40-90"),
 ]
+EXCLUDED_ROWS = {
+    ("White", None, None),
+    ("Mexican", "Male", "40-90"),
+}
 
 COLORS = {
     "Training": "#585858",
@@ -68,7 +72,7 @@ X_AXIS_MARGIN_FRACTION = 0.10
 X_AXIS_MIN_MARGIN = 1.0
 X_AXIS_LABEL = "BrainAGE (years)"
 X_AXIS_TICK_STEP = 10
-X_AXIS_LIMITS = (-20, 20)
+X_AXIS_LIMITS = (-10, 10)
 
 # The ridgeline input table is large and can be regenerated from the output CSVs.
 # Turn this on only when you want the underlying plotted values saved for checking.
@@ -191,7 +195,15 @@ def load_self_records() -> list[pd.DataFrame]:
 def build_plot_data() -> pd.DataFrame:
     data = pd.concat(load_training_records() + load_self_records(), ignore_index=True)
     data = data.dropna(subset=["BrainAGE"])
+    for dataset, sex, age_group in EXCLUDED_ROWS:
+        mask = data["dataset"].eq(dataset)
+        if sex is not None:
+            mask &= data["sex"].eq(sex)
+        if age_group is not None:
+            mask &= data["age_group"].eq(age_group)
+        data = data.loc[~mask]
     data["dataset"] = pd.Categorical(data["dataset"], categories=ROW_ORDER, ordered=True)
+    data = data.dropna(subset=["dataset"])
     data["panel"] = data["sex"] + " " + data["age_group"]
     return data.sort_values(["kind", "sex", "age_group", "dataset"]).reset_index(drop=True)
 
