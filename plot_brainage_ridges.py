@@ -21,13 +21,23 @@ DATASET_LABELS = {
     "self_black": "Black",
     "self_chilean": "Chilean",
     "self_chinese": "Chinese",
+    "self_chinese_rerun": "Chinese Rerun",
     "self_mexican": "Mexican",
     "self_southasian": "South Asian",
     "self_turkish": "Turkish",
     "self_white": "White",
 }
 
-ROW_ORDER = ["Training", "Black", "Chilean", "Chinese", "Mexican", "South Asian", "Turkish"]
+ROW_ORDER = [
+    "Training",
+    "Black",
+    "Chilean",
+    "Chinese",
+    "Chinese Rerun",
+    "Mexican",
+    "South Asian",
+    "Turkish",
+]
 PANEL_ORDER = [
     ("Female", "5-40"),
     ("Female", "40-90"),
@@ -44,6 +54,7 @@ COLORS = {
     "Black": "#4C78A8",
     "Chilean": "#F58518",
     "Chinese": "#54A24B",
+    "Chinese Rerun": "#2F8F46",
     "Mexican": "#E45756",
     "South Asian": "#72B7B2",
     "Turkish": "#B279A2",
