@@ -42,7 +42,9 @@ REUSABLE_TEMPLATE_FILES = {
     "female": "brainAGE_template_Female_REUSABLE.xlsx",
 }
 STRICT_ROW_KEY_MATCH = True
-ALLOW_ROW_ORDER_MISMATCH_DATASETS = {"self_chinese"}
+ALLOW_ROW_ORDER_MISMATCH_DATASETS = {
+    "self_chinese",
+}
 SORT_INPUT_ROWS_BY_COLUMNS = {
     "self_chinese": ("age",),
 }

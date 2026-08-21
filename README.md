@@ -49,7 +49,12 @@ Reusable blank templates live here:
 
 ## Plot BrainAGE Distributions
 
-Create the adjusted and unadjusted self-dataset ridgeline plots:
+The current Chinese dataset lives in `self_chinese`. The BrainAGE plots
+currently show Chilean, `self_chinese` as `Chinese`, and `self_turkish` as
+`Turkish`.
+The matched-size statistical analysis is focused on Chinese and Turkish only.
+
+Create the adjusted self-dataset ridgeline plots:
 
 ```bash
 python3 plot.py
@@ -58,19 +63,37 @@ python3 plot.py
 This writes:
 
 - `graph_outputs/self_adjusted_brainage_ridgelines.png`
-- `graph_outputs/self_unadjusted_brainage_ridgelines.png`
+- `graph_outputs/self_female_adjusted_brainage_ridgelines.png`
+- `graph_outputs/self_male_adjusted_brainage_ridgelines.png`
 
 The smoothing and axis controls are near the top of `plot_brainage_ridges.py`:
 
-- `TRAINING_DENSITY_STYLE`
-- `TRAINING_KDE_BANDWIDTH`
-- `SELF_KDE_BANDWIDTH`
+- `X_LIMITS`
 - `RIDGE_HEIGHT`
-- `X_AXIS_TICK_STEP`
-- `SAVE_PLOT_DATA`
+- `TRAINING_BANDWIDTH`
+- `DATASET_BANDWIDTH`
 
 ## Notes
 
 - `plot.py` is a small wrapper so you can keep using the simple command.
 - `plot_brainage_ridges.py` contains the actual plotting logic.
 - Generated caches and macOS metadata files are ignored by git.
+
+## Matched-Size Reference Subsampling
+
+Run the matched-size reference analysis against the training reference cohort:
+
+```bash
+python3 matched_size_reference_subsampling.py
+```
+
+The default random seed is `2005`.
+The current statistical-analysis list hides Chile and uses only Chinese and
+Turkish.
+
+This writes:
+
+- `graph_outputs/matched_size_reference_subsampling_summary.csv`
+- `graph_outputs/matched_size_reference_subsampling_samples.csv`
+- `graph_outputs/matched_size_reference_adjusted_mean_bag.png`
+- `graph_outputs/matched_size_reference_adjusted_sd_bag.png`
