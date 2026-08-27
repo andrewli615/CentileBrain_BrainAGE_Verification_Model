@@ -1,10 +1,11 @@
 # CentileBrain BrainAGE
 
-This folder has three main working areas:
+This folder has four main working areas:
 
 - `ethnoracial_data/`: input CSVs and BrainAGE Excel templates.
 - `ethnoracial_data_outputs/`: CentileBrain output CSVs.
 - `graph_outputs/`: generated summaries and BrainAGE plots.
+- `analyses/`: standalone statistical analyses and diagnostics.
 
 Current working scope: self-reported ethnoracial datasets. Genetic datasets are still present, but the default scripts are set to ignore them unless you explicitly ask for them.
 
@@ -49,12 +50,12 @@ Reusable blank templates live here:
 
 ## Plot BrainAGE Distributions
 
-The current Chinese dataset lives in `self_chinese`. The BrainAGE plots
-currently show Chilean, `self_chinese` as `Chinese`, and `self_turkish` as
-`Turkish`.
-The matched-size statistical analysis is focused on Chinese and Turkish only.
+The active BrainAGE groups are Chinese, Japanese, Mexican, South Asian, and
+Turkish. Black, Chilean, and White are retained in the workspace but excluded
+from the adjusted and nonadjusted BrainAGE analysis scope. `self_mexican`
+contains the August 2026 replacement Mexican results.
 
-Create the adjusted self-dataset ridgeline plots:
+Create the adjusted and unadjusted self-dataset ridgeline plots:
 
 ```bash
 python3 plot.py
@@ -65,6 +66,9 @@ This writes:
 - `graph_outputs/self_adjusted_brainage_ridgelines.png`
 - `graph_outputs/self_female_adjusted_brainage_ridgelines.png`
 - `graph_outputs/self_male_adjusted_brainage_ridgelines.png`
+- `graph_outputs/self_unadjusted_brainage_ridgelines.png`
+- `graph_outputs/self_female_unadjusted_brainage_ridgelines.png`
+- `graph_outputs/self_male_unadjusted_brainage_ridgelines.png`
 
 The smoothing and axis controls are near the top of `plot_brainage_ridges.py`:
 
@@ -73,27 +77,27 @@ The smoothing and axis controls are near the top of `plot_brainage_ridges.py`:
 - `TRAINING_BANDWIDTH`
 - `DATASET_BANDWIDTH`
 
+## BrainAGE GAP Analyses
+
+The independent two-sample analyses live in `analyses/brainage_gap/`:
+
+```bash
+python3 analyses/brainage_gap/bootstrap.py
+python3 analyses/brainage_gap/permutation.py
+```
+
+Their summaries, iteration tables, and cohort plots are kept separately under
+`analyses/brainage_gap/outputs/bootstrap/` and
+`analyses/brainage_gap/outputs/permutation/`.
+
+Adjusted-data Q-Q plots are generated separately:
+
+```bash
+python3 analyses/qq_plots/generate_qq_plots.py
+```
+
 ## Notes
 
 - `plot.py` is a small wrapper so you can keep using the simple command.
 - `plot_brainage_ridges.py` contains the actual plotting logic.
 - Generated caches and macOS metadata files are ignored by git.
-
-## Matched-Size Reference Subsampling
-
-Run the matched-size reference analysis against the training reference cohort:
-
-```bash
-python3 matched_size_reference_subsampling.py
-```
-
-The default random seed is `2005`.
-The current statistical-analysis list hides Chile and uses only Chinese and
-Turkish.
-
-This writes:
-
-- `graph_outputs/matched_size_reference_subsampling_summary.csv`
-- `graph_outputs/matched_size_reference_subsampling_samples.csv`
-- `graph_outputs/matched_size_reference_adjusted_mean_bag.png`
-- `graph_outputs/matched_size_reference_adjusted_sd_bag.png`

@@ -1,7 +1,0 @@
-dataset_key,dataset,sex,age_group,n,Unadjusted_BrainAGE,Adjusted_BrainAGE,Unadjusted_Corr,Adjusted_Corr,source_file
-self_chinese,Chinese,Female,40-90,326,4.402919997864553,2.407634203579553,0.6500797271269878,0.883834257610335,ethnoracial_data_outputs/self_chinese/Female_40-90/output_file_2026-08-19-00-08-18_Adjusted_BrainAGE_female.csv
-self_chinese,Chinese,Female,5-40,547,0.9317792001265633,2.167043180506354,0.3544325929338077,0.787166654809741,ethnoracial_data_outputs/self_chinese/Female_5-40/output_file_2026-08-19-00-06-48_Adjusted_BrainAGE_female.csv
-self_chinese,Chinese,Male,40-90,198,3.3758057567271496,2.29934150021436,0.6122743776356198,0.868168224489647,ethnoracial_data_outputs/self_chinese/Male_40-90/output_file_2026-08-19-00-04-54_Adjusted_BrainAGE_male.csv
-self_chinese,Chinese,Male,5-40,418,-0.03977749323601211,0.4370334934273646,0.37169923756848244,0.6771136615693727,ethnoracial_data_outputs/self_chinese/Male_5-40/output_file_2026-08-19-00-31-35_Adjusted_BrainAGE_male.csv
-self_turkish,Turkish,Female,5-40,268,-0.48354370855071377,-0.46775167611402624,0.39907379054446973,0.6165933989170699,ethnoracial_data_outputs/self_turkish/Female_5-40/output_file_2026-06-29-01-19-43_Adjusted_BrainAGE_female.csv
-self_turkish,Turkish,Male,5-40,154,-0.437793579191626,-0.24714756709446986,0.34633421671698694,0.5626932440052796,ethnoracial_data_outputs/self_turkish/Male_5-40/output_file_2026-06-29-01-20-21_Adjusted_BrainAGE_male.csv

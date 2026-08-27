@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Adjusted BrainAGE ridgeline plots for the active datasets."""
+"""Adjusted and unadjusted BrainAGE ridgeline plots for active datasets."""
 
 from __future__ import annotations
 
@@ -54,11 +54,12 @@ def training_file(sex: str, age_group: str) -> Path:
     return TRAINING_ROOT / f"training_{age_key}_{sex.lower()}.csv"
 
 
-def load_training_rows() -> list[pd.DataFrame]:
+def load_training_rows(measure: str) -> list[pd.DataFrame]:
     rows = []
     for sex, age_group in PANELS:
         df = pd.read_csv(training_file(sex, age_group))
-        brainage = df["predicted brain age_adjusted"] - df["age"]
+        predicted = "predicted brain age_adjusted" if measure == "Adjusted" else "predicted brain age"
+        brainage = df[predicted] - df["age"]
         rows.append(
             pd.DataFrame(
                 {
@@ -72,18 +73,25 @@ def load_training_rows() -> list[pd.DataFrame]:
     return rows
 
 
-def load_dataset_rows() -> list[pd.DataFrame]:
+def load_dataset_rows(measure: str) -> list[pd.DataFrame]:
     rows = []
     for dataset_key, label, _ in BRAINAGE_DATASETS:
         for group_dir in sorted(path for path in (OUTPUT_ROOT / dataset_key).iterdir() if path.is_dir()):
             match = re.fullmatch(r"(Female|Male)_(5-40|40-90)", group_dir.name)
             if not match:
                 continue
-            bag_file = newest_csv(group_dir, "*_Adjusted_BrainAGE_*.csv")
+            pattern = "*_Adjusted_BrainAGE_*.csv" if measure == "Adjusted" else "*_MR_predicted_age_*.csv"
+            bag_file = newest_csv(group_dir, pattern)
+            if bag_file is None:
+                continue
+            if measure == "Unadjusted" and "_Adjusted_" in bag_file.name:
+                files = [path for path in group_dir.glob(pattern) if "_Adjusted_" not in path.name]
+                bag_file = max(files, key=lambda path: path.stat().st_mtime) if files else None
             if bag_file is None:
                 continue
             sex, age_group = match.groups()
-            values = pd.read_csv(bag_file)["Adjusted_BrainAGE"]
+            column = "Adjusted_BrainAGE" if measure == "Adjusted" else "Unadjusted_BrainAGE"
+            values = pd.read_csv(bag_file)[column]
             rows.append(
                 pd.DataFrame(
                     {
@@ -98,8 +106,8 @@ def load_dataset_rows() -> list[pd.DataFrame]:
     return rows
 
 
-def build_plot_data() -> pd.DataFrame:
-    data = pd.concat(load_training_rows() + load_dataset_rows(), ignore_index=True)
+def build_plot_data(measure: str = "Adjusted") -> pd.DataFrame:
+    data = pd.concat(load_training_rows(measure) + load_dataset_rows(measure), ignore_index=True)
     data = data.dropna(subset=["BrainAGE"])
     data["dataset"] = pd.Categorical(data["dataset"], categories=BRAINAGE_ROW_ORDER, ordered=True)
     return data.sort_values(["sex", "age_group", "dataset"]).reset_index(drop=True)
@@ -162,7 +170,7 @@ def draw_panel(ax, data: pd.DataFrame, sex: str, age_group: str, x_grid: np.ndar
     ax.spines[["top", "right", "left"]].set_visible(False)
 
 
-def make_plot(data: pd.DataFrame, panels: list[tuple[str, str]], output_name: str, plt, locator) -> Path:
+def make_plot(data: pd.DataFrame, panels: list[tuple[str, str]], measure: str, output_name: str, plt, locator) -> Path:
     x_grid = np.linspace(*X_LIMITS, 500)
     n_cols = 2
     n_rows = math.ceil(len(panels) / n_cols)
@@ -174,7 +182,7 @@ def make_plot(data: pd.DataFrame, panels: list[tuple[str, str]], output_name: st
     for ax in axes[len(panels) :]:
         ax.axis("off")
 
-    fig.suptitle("Adjusted BrainAGE Distributions", fontsize=18, y=0.98)
+    fig.suptitle(f"{measure} BrainAGE Distributions", fontsize=18, y=0.98)
     fig.supxlabel("BrainAGE (years)", fontsize=13)
     fig.tight_layout(rect=(0.04, 0.06, 1, 0.94), w_pad=3.2)
 
@@ -187,13 +195,15 @@ def make_plot(data: pd.DataFrame, panels: list[tuple[str, str]], output_name: st
 def main() -> None:
     GRAPH_ROOT.mkdir(exist_ok=True)
     plt, locator = setup_matplotlib()
-    data = build_plot_data()
-
-    outputs = [
-        make_plot(data, PANELS, "self_adjusted_brainage_ridgelines.png", plt, locator),
-        make_plot(data, [("Female", age) for age in AGE_PANELS], "self_female_adjusted_brainage_ridgelines.png", plt, locator),
-        make_plot(data, [("Male", age) for age in AGE_PANELS], "self_male_adjusted_brainage_ridgelines.png", plt, locator),
-    ]
+    outputs = []
+    for measure in ("Adjusted", "Unadjusted"):
+        data = build_plot_data(measure)
+        key = measure.lower()
+        outputs.extend([
+            make_plot(data, PANELS, measure, f"self_{key}_brainage_ridgelines.png", plt, locator),
+            make_plot(data, [("Female", age) for age in AGE_PANELS], measure, f"self_female_{key}_brainage_ridgelines.png", plt, locator),
+            make_plot(data, [("Male", age) for age in AGE_PANELS], measure, f"self_male_{key}_brainage_ridgelines.png", plt, locator),
+        ])
     for output in outputs:
         print(output)
 

@@ -1,0 +1,19 @@
+Group,Sex,Age_Group,N,Mean_Adjusted_BrainAGE,SD_Adjusted_BrainAGE,Plot_Path
+Chinese,Female,40-90,326,2.407634203579553,4.338646858744735,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Female_40-90_adjusted_qq.png
+Chinese,Female,5-40,547,2.167043180506354,3.0313326434804013,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Female_5-40_adjusted_qq.png
+Chinese,Male,40-90,198,2.29934150021436,4.43671940321462,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Male_40-90_adjusted_qq.png
+Chinese,Male,5-40,418,0.4370334934273646,3.5731632800310655,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Male_5-40_adjusted_qq.png
+Japanese,Female,40-90,187,3.377495193717641,4.379184553745139,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Japanese/Japanese_Female_40-90_adjusted_qq.png
+Japanese,Female,5-40,216,-1.1770276397723825,3.0201601808075784,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Japanese/Japanese_Female_5-40_adjusted_qq.png
+Japanese,Male,40-90,128,3.2392280393425645,4.462479311130584,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Japanese/Japanese_Male_40-90_adjusted_qq.png
+Japanese,Male,5-40,389,-0.7710055069016482,3.4202229201318946,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Japanese/Japanese_Male_5-40_adjusted_qq.png
+Mexican,Female,40-90,31,6.252526153938822,4.00490858346933,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Mexican/Mexican_Female_40-90_adjusted_qq.png
+Mexican,Female,5-40,106,-0.9768102392205783,3.490224471608961,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Mexican/Mexican_Female_5-40_adjusted_qq.png
+Mexican,Male,40-90,13,-0.903863382798942,4.198501462618883,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Mexican/Mexican_Male_40-90_adjusted_qq.png
+Mexican,Male,5-40,164,-1.6351542319329266,3.766772872836189,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Mexican/Mexican_Male_5-40_adjusted_qq.png
+South Asian,Female,40-90,144,2.0006319047892145,4.084501414423392,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/South_Asian/South_Asian_Female_40-90_adjusted_qq.png
+South Asian,Female,5-40,16,-0.31817520919992465,2.961073454378585,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/South_Asian/South_Asian_Female_5-40_adjusted_qq.png
+South Asian,Male,40-90,238,2.4648364625328756,4.226918674801383,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/South_Asian/South_Asian_Male_40-90_adjusted_qq.png
+South Asian,Male,5-40,21,0.06202825830603671,3.7538459745821164,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/South_Asian/South_Asian_Male_5-40_adjusted_qq.png
+Turkish,Female,5-40,268,-0.46775167611402624,3.0078567749869385,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Turkish/Turkish_Female_5-40_adjusted_qq.png
+Turkish,Male,5-40,154,-0.24714756709446986,3.394069306789935,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Turkish/Turkish_Male_5-40_adjusted_qq.png

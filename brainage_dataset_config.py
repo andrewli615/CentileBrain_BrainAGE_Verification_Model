@@ -1,13 +1,14 @@
-"""Dataset labels/colors used by the adjusted-only BrainAGE scripts."""
+"""Active dataset labels and colors used by the BrainAGE scripts."""
 
 BRAINAGE_DATASETS = [
-    ("self_chilean", "Chilean", "#F58518"),
     ("self_chinese", "Chinese", "#2F8F46"),
+    ("self_japanese", "Japanese", "#4C78A8"),
+    ("self_mexican", "Mexican", "#E45756"),
+    ("self_southasian", "South Asian", "#72B7B2"),
     ("self_turkish", "Turkish", "#B279A2"),
 ]
 
 STATS_DATASETS = [
-    ("self_chinese", "Chinese", "#2F8F46"),
     ("self_turkish", "Turkish", "#B279A2"),
 ]
 
