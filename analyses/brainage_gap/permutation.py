@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from brainage_dataset_config import BRAINAGE_DATASETS
+from brainage_dataset_config import BRAINAGE_DATASETS, age_panel_rows
 OUT = Path(__file__).resolve().parent / "outputs" / "permutation"
 N_REPS, SEED = 10_000, 2005
 
@@ -33,10 +33,10 @@ def cohorts():
                 yield label, *match.groups(), max(files, key=lambda path: path.stat().st_mtime)
 
 
-def plot_histogram(label, deltas, observed, null_mean, ci, p_value):
+def plot_histogram(label, metric, deltas, observed, null_mean, ci, p_value):
     folder = OUT / "Plots" / label.split("_")[0]
     folder.mkdir(parents=True, exist_ok=True)
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(12, 3.4))
     ax.hist(deltas, bins=50, density=True, color="#9ECAE1", edgecolor="white", alpha=.8,
             label=f"Permutation Null (B={N_REPS:,})")
     ax.axvline(null_mean, color="#252525", linestyle=":", linewidth=1.8, label=f"Null Mean: {null_mean:+.3f}")
@@ -44,11 +44,11 @@ def plot_histogram(label, deltas, observed, null_mean, ci, p_value):
     ax.axvline(ci[1], color="#08519C", linestyle="--")
     ax.axvline(observed, color="#E6550D", linewidth=2.5, label=f"Observed: {observed:+.3f}")
     p_text = f"p = {p_value:.4f}" if p_value >= .0001 else "p < 0.0001"
-    ax.set(title=f"{label}\nTwo-Sample Permutation Test (Delta MAE) | {p_text}",
-           xlabel="Cohort MAE - reference MAE (years)", ylabel="Density")
+    ax.set(title=f"{label}\nTwo-Sample Permutation Test (Delta Mean {metric}) | {p_text}",
+           xlabel=f"Cohort mean {metric} - reference mean {metric} (years)", ylabel="Density")
     ax.legend(frameon=False, fontsize=8)
     fig.tight_layout()
-    output = folder / f"{label}_permutation_histogram.png"
+    output = folder / f"{label}_{metric}_permutation_histogram.png"
     fig.savefig(output, dpi=300)
     plt.close(fig)
     return output
@@ -59,27 +59,30 @@ def main():
     summaries, samples = [], []
     OUT.mkdir(exist_ok=True)
     for group, sex, age_group, path in cohorts():
-        test = np.abs(pd.read_csv(path)["Adjusted_BrainAGE"].dropna().to_numpy())
-        ref = np.abs(reference_bag(sex, age_group))
-        observed = test.mean() - ref.mean()
-        pooled = np.concatenate([test, ref])
-        deltas = np.empty(N_REPS)
-        for i in range(N_REPS):
-            shuffled = rng.permutation(pooled)
-            deltas[i] = shuffled[:len(test)].mean() - shuffled[len(test):].mean()
-        ci = np.percentile(deltas, [2.5, 97.5])
-        p_greater = (1 + np.sum(deltas >= observed)) / (N_REPS + 1)
-        p_two_sided = (1 + np.sum(np.abs(deltas) >= abs(observed))) / (N_REPS + 1)
-        label = f"{group}_{sex}_{age_group}"
-        plot = plot_histogram(label, deltas, observed, deltas.mean(), ci, p_greater)
-        summaries.append({"Group": group, "Sex": sex, "Age_Group": age_group,
-                          "N_Test": len(test), "N_Ref": len(ref), "Test_MAE": test.mean(),
-                          "Ref_MAE": ref.mean(), "Observed_Delta_MAE": observed,
-                          "Null_Mean_Delta": deltas.mean(), "Null_95_Lower": ci[0],
-                          "Null_95_Upper": ci[1], "p_value_error_increase": p_greater,
-                          "p_value_two_sided": p_two_sided, "Plot_Path": str(plot)})
-        samples.append(pd.DataFrame({"Iteration": np.arange(1, N_REPS + 1), "Group": group,
-                                     "Sex": sex, "Age_Group": age_group, "Permutation_Delta": deltas}))
+        signed_test = age_panel_rows(pd.read_csv(path), age_group)["Adjusted_BrainAGE"].dropna().to_numpy()
+        signed_ref = reference_bag(sex, age_group)
+        for metric, test, ref in (("BAG", signed_test, signed_ref),
+                                  ("MAE", np.abs(signed_test), np.abs(signed_ref))):
+            observed = test.mean() - ref.mean()
+            pooled = np.concatenate([test, ref])
+            deltas = np.empty(N_REPS)
+            for i in range(N_REPS):
+                shuffled = rng.permutation(pooled)
+                deltas[i] = shuffled[:len(test)].mean() - shuffled[len(test):].mean()
+            ci = np.percentile(deltas, [2.5, 97.5])
+            p_greater = (1 + np.sum(deltas >= observed)) / (N_REPS + 1)
+            p_two_sided = (1 + np.sum(np.abs(deltas) >= abs(observed))) / (N_REPS + 1)
+            label = f"{group}_{sex}_{age_group}"
+            plot = plot_histogram(label, metric, deltas, observed, deltas.mean(), ci, p_greater)
+            summaries.append({"Group": group, "Sex": sex, "Age_Group": age_group, "Metric": metric,
+                              "N_Test": len(test), "N_Ref": len(ref), "Test_Mean": test.mean(),
+                              "Ref_Mean": ref.mean(), "Observed_Delta": observed,
+                              "Null_Mean_Delta": deltas.mean(), "Null_95_Lower": ci[0],
+                              "Null_95_Upper": ci[1], "p_value_greater": p_greater,
+                              "p_value_two_sided": p_two_sided, "Plot_Path": str(plot)})
+            samples.append(pd.DataFrame({"Iteration": np.arange(1, N_REPS + 1), "Group": group,
+                                         "Sex": sex, "Age_Group": age_group, "Metric": metric,
+                                         "Permutation_Delta": deltas}))
     summary = pd.DataFrame(summaries)
     summary.to_csv(OUT / "two_sample_permutation_summary.csv", index=False)
     summary.to_excel(OUT / "two_sample_permutation_summary.xlsx", index=False)

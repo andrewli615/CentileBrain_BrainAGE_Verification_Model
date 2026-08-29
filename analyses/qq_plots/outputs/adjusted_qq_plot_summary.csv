@@ -1,7 +1,11 @@
 Group,Sex,Age_Group,N,Mean_Adjusted_BrainAGE,SD_Adjusted_BrainAGE,Plot_Path
-Chinese,Female,40-90,326,2.407634203579553,4.338646858744735,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Female_40-90_adjusted_qq.png
+Black,Female,40-90,159,1.363774017757769,3.7463643963329307,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Black/Black_Female_40-90_adjusted_qq.png
+Black,Male,40-90,125,2.4413456086110297,4.099042768495567,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Black/Black_Male_40-90_adjusted_qq.png
+Chilean,Female,5-40,27,3.44301259731997,2.962648160440888,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chilean/Chilean_Female_5-40_adjusted_qq.png
+Chilean,Male,5-40,56,2.0836188890031098,3.569948790110473,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chilean/Chilean_Male_5-40_adjusted_qq.png
+Chinese,Female,40-90,324,2.4327738703834156,4.340140449705264,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Female_40-90_adjusted_qq.png
 Chinese,Female,5-40,547,2.167043180506354,3.0313326434804013,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Female_5-40_adjusted_qq.png
-Chinese,Male,40-90,198,2.29934150021436,4.43671940321462,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Male_40-90_adjusted_qq.png
+Chinese,Male,40-90,194,2.200908610823356,4.349160377813303,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Male_40-90_adjusted_qq.png
 Chinese,Male,5-40,418,0.4370334934273646,3.5731632800310655,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Chinese/Chinese_Male_5-40_adjusted_qq.png
 Japanese,Female,40-90,187,3.377495193717641,4.379184553745139,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Japanese/Japanese_Female_40-90_adjusted_qq.png
 Japanese,Female,5-40,216,-1.1770276397723825,3.0201601808075784,/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/analyses/qq_plots/outputs/Japanese/Japanese_Female_5-40_adjusted_qq.png

@@ -50,8 +50,8 @@ Reusable blank templates live here:
 
 ## Plot BrainAGE Distributions
 
-The active BrainAGE groups are Chinese, Japanese, Mexican, South Asian, and
-Turkish. Black, Chilean, and White are retained in the workspace but excluded
+The active BrainAGE groups are Black, Chilean, Chinese, Japanese, Mexican,
+South Asian, and Turkish. White is retained in the workspace but excluded
 from the adjusted and nonadjusted BrainAGE analysis scope. `self_mexican`
 contains the August 2026 replacement Mexican results.
 

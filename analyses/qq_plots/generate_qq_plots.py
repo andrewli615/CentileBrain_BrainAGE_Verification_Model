@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from brainage_dataset_config import BRAINAGE_DATASETS
+from brainage_dataset_config import BRAINAGE_DATASETS, age_panel_rows
 
 OUT = Path(__file__).resolve().parent / "outputs"
 
@@ -31,7 +31,7 @@ def cohorts():
 def main():
     rows = []
     for group, color, sex, age_group, path in cohorts():
-        values = pd.read_csv(path)["Adjusted_BrainAGE"].dropna().to_numpy()
+        values = age_panel_rows(pd.read_csv(path), age_group)["Adjusted_BrainAGE"].dropna().to_numpy()
         standardized = (values - values.mean()) / values.std(ddof=1)
         theoretical, observed = stats.probplot(standardized, dist="norm", fit=False)
         limit = 1.08 * max(abs(np.r_[theoretical, observed]))

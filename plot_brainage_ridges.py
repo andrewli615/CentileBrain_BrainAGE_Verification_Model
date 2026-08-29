@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import gaussian_kde
 
-from brainage_dataset_config import BRAINAGE_DATASETS, BRAINAGE_ROW_ORDER, COLORS
+from brainage_dataset_config import BRAINAGE_DATASETS, BRAINAGE_ROW_ORDER, COLORS, age_panel_rows
 
 
 ROOT = Path(__file__).resolve().parent
@@ -91,7 +91,7 @@ def load_dataset_rows(measure: str) -> list[pd.DataFrame]:
                 continue
             sex, age_group = match.groups()
             column = "Adjusted_BrainAGE" if measure == "Adjusted" else "Unadjusted_BrainAGE"
-            values = pd.read_csv(bag_file)[column]
+            values = age_panel_rows(pd.read_csv(bag_file), age_group)[column]
             rows.append(
                 pd.DataFrame(
                     {
