@@ -41,6 +41,7 @@ ZERO_COLOR = "#6E6E6E"
 TRAINING_POINT_ALPHA = 0.15
 OBSERVED_POINT_ALPHA = 0.15
 OBSERVED_SEGMENT_COUNT_OFFSET = 0.035
+SEGMENT_LINE_GAP_FRACTION = 0.04
 
 
 @dataclass(frozen=True)
@@ -151,83 +152,66 @@ def rows_in_segment(df: pd.DataFrame, start: float, end: float, is_last: bool) -
     return df[(df["age"] >= start) & (df["age"] < end)]
 
 
-def supported_segments(df: pd.DataFrame, age_group: str, segment_years: int) -> list[dict[str, object]]:
+def segment_line_span(start: float, end: float) -> tuple[float, float]:
+    gap = (end - start) * SEGMENT_LINE_GAP_FRACTION
+    if end - start <= gap * 2:
+        return start, end
+    return start + gap, end - gap
+
+
+def independent_segmented_fit(df: pd.DataFrame, age_group: str, segment_years: int) -> dict[str, object] | None:
     clean = df.dropna(subset=["age", "residual"])
+    if clean.empty:
+        return None
+
     segments = fixed_segments(age_group, segment_years)
-    rows_by_segment = []
-    nonempty_indices = []
-    for idx, (start, end) in enumerate(segments):
-        rows = rows_in_segment(df, start, end, idx == len(segments) - 1)
-        rows_by_segment.append(
-            {
-                "segment_start": start,
-                "segment_end": end,
-                "n": len(rows),
-            }
-        )
-        if len(rows) > 0:
-            nonempty_indices.append(idx)
-
-    if clean.empty or not nonempty_indices:
-        return []
-    first, last = nonempty_indices[0], nonempty_indices[-1]
-    return rows_by_segment[first : last + 1]
-
-
-def piecewise_design(x: np.ndarray, knots: list[float]) -> np.ndarray:
-    columns = [np.ones_like(x), x]
-    columns.extend(np.maximum(0.0, x - knot) for knot in knots)
-    return np.column_stack(columns)
-
-
-def piecewise_predict(x: np.ndarray, coefficients: np.ndarray, knots: list[float]) -> np.ndarray:
-    return piecewise_design(x, knots) @ coefficients
-
-
-def continuous_segmented_fit(df: pd.DataFrame, age_group: str, segment_years: int) -> dict[str, object] | None:
-    segments = supported_segments(df, age_group, segment_years)
-    if not segments:
-        return None
-
-    start = float(segments[0]["segment_start"])
-    end = float(segments[-1]["segment_end"])
-    clean = df.dropna(subset=["age", "residual"])
-    clean = clean[clean["age"].between(start, end, inclusive="both")]
-    if len(clean) < 2 or clean["age"].nunique() < 2:
-        return None
-
-    knots = [float(segment["segment_end"]) for segment in segments[:-1]]
-    x = clean["age"].to_numpy(float)
-    y = clean["residual"].to_numpy(float)
-    coefficients, *_ = np.linalg.lstsq(piecewise_design(x, knots), y, rcond=None)
-    predicted = piecewise_predict(x, coefficients, knots)
-    model_r = np.corrcoef(y, predicted)[0, 1] if np.std(predicted) > 0 and np.std(y) > 0 else np.nan
-
     segment_rows = []
-    for segment in segments:
-        segment_start = float(segment["segment_start"])
-        active_knots = [knot for knot in knots if knot <= segment_start]
-        active_gammas = coefficients[2 : 2 + len(active_knots)]
-        slope = float(coefficients[1] + active_gammas.sum())
-        intercept = float(coefficients[0] - sum(gamma * knot for gamma, knot in zip(active_gammas, active_knots)))
-        segment_rows.append(
-            {
-                "segment_start": segment_start,
-                "segment_end": float(segment["segment_end"]),
-                "n": int(segment["n"]),
-                "slope": slope,
-                "intercept": intercept,
-                "r": float(model_r),
-            }
-        )
+    for idx, (start, end) in enumerate(segments):
+        rows = rows_in_segment(clean, start, end, idx == len(segments) - 1)
+        n = len(rows)
+        if n == 0:
+            continue
 
-    return {
-        "start": start,
-        "end": end,
-        "knots": knots,
-        "coefficients": coefficients,
-        "segments": segment_rows,
-    }
+        label_x = float(rows["age"].median())
+        label_y = float(rows["residual"].median())
+        segment = {
+            "segment_start": start,
+            "segment_end": end,
+            "line_start": np.nan,
+            "line_end": np.nan,
+            "label_x": label_x,
+            "label_y": label_y,
+            "n": n,
+            "slope": np.nan,
+            "intercept": np.nan,
+            "r": np.nan,
+            "can_plot": False,
+        }
+
+        fit = linear_fit(rows)
+        if fit is not None:
+            slope, intercept, rvalue = fit
+            line_start, line_end = segment_line_span(start, end)
+            if line_start < line_end:
+                line_mid = (line_start + line_end) / 2
+                segment.update(
+                    {
+                        "line_start": line_start,
+                        "line_end": line_end,
+                        "label_x": line_mid,
+                        "label_y": float(slope * line_mid + intercept),
+                        "slope": slope,
+                        "intercept": intercept,
+                        "r": rvalue,
+                        "can_plot": True,
+                    }
+                )
+
+        segment_rows.append(segment)
+
+    if not segment_rows:
+        return None
+    return {"segments": segment_rows}
 
 
 def annotate_observed_segment_counts(ax, segmented_fit: dict[str, object]) -> None:
@@ -237,12 +221,8 @@ def annotate_observed_segment_counts(ax, segmented_fit: dict[str, object]) -> No
         n = int(segment["n"])
         if n == 0:
             continue
-        x_mid = (float(segment["segment_start"]) + float(segment["segment_end"])) / 2
-        y_mid = piecewise_predict(
-            np.array([x_mid]),
-            segmented_fit["coefficients"],
-            segmented_fit["knots"],
-        )[0]
+        x_mid = float(segment["label_x"])
+        y_mid = float(segment["label_y"])
         ax.text(
             x_mid,
             min(y_mid + y_offset, y_max - y_offset * 0.25),
@@ -296,14 +276,20 @@ def y_limits_for_panel(panel: PlotData, segment_years: int) -> tuple[float, floa
         if span is not None:
             x = np.array(span)
             values.append(slope * x + intercept)
-    training_segmented_fit = continuous_segmented_fit(panel.training, panel.age_group, segment_years)
+    training_segmented_fit = independent_segmented_fit(panel.training, panel.age_group, segment_years)
     if training_segmented_fit is not None:
-        x = np.linspace(float(training_segmented_fit["start"]), float(training_segmented_fit["end"]), 400)
-        values.append(piecewise_predict(x, training_segmented_fit["coefficients"], training_segmented_fit["knots"]))
-    observed_fit = continuous_segmented_fit(panel.observed, panel.age_group, segment_years)
+        for fit in training_segmented_fit["segments"]:
+            if not fit["can_plot"]:
+                continue
+            x = np.array([float(fit["line_start"]), float(fit["line_end"])])
+            values.append(float(fit["slope"]) * x + float(fit["intercept"]))
+    observed_fit = independent_segmented_fit(panel.observed, panel.age_group, segment_years)
     if observed_fit is not None:
-        x = np.linspace(float(observed_fit["start"]), float(observed_fit["end"]), 400)
-        values.append(piecewise_predict(x, observed_fit["coefficients"], observed_fit["knots"]))
+        for fit in observed_fit["segments"]:
+            if not fit["can_plot"]:
+                continue
+            x = np.array([float(fit["line_start"]), float(fit["line_end"])])
+            values.append(float(fit["slope"]) * x + float(fit["intercept"]))
     return rounded_limits(np.concatenate(values) if values else np.array([]))
 
 
@@ -374,17 +360,16 @@ def draw_panel(
             }
         )
 
-    training_segmented_fit = continuous_segmented_fit(panel.training, panel.age_group, segment_years)
+    training_segmented_fit = independent_segmented_fit(panel.training, panel.age_group, segment_years)
     if training_segmented_fit is not None:
-        x = np.linspace(float(training_segmented_fit["start"]), float(training_segmented_fit["end"]), 400)
-        y = piecewise_predict(x, training_segmented_fit["coefficients"], training_segmented_fit["knots"])
-        ax.plot(
-            x,
-            y,
-            color=TRAINING_SEGMENTED_COLOR,
-            linewidth=2.8,
-            label="Training segmented fit" if show_legend else None,
-        )
+        label_used = False
+        for fit in training_segmented_fit["segments"]:
+            if not fit["can_plot"]:
+                continue
+            x = np.array([float(fit["line_start"]), float(fit["line_end"])])
+            label = "Training segmented fit" if show_legend and not label_used else None
+            ax.plot(x, float(fit["slope"]) * x + float(fit["intercept"]), color=TRAINING_SEGMENTED_COLOR, linewidth=2.8, label=label)
+            label_used = True
 
     for fit in training_segmented_fit["segments"] if training_segmented_fit is not None else []:
         stats_rows.append(
@@ -393,7 +378,7 @@ def draw_panel(
                 "Sex": panel.sex,
                 "Age_Group": panel.age_group,
                 "Data": "Training",
-                "Fit_Mode": "continuous_piecewise",
+                "Fit_Mode": "independent_segment",
                 "Segment_Years": segment_years,
                 "Segment_Start": fit["segment_start"],
                 "Segment_End": fit["segment_end"],
@@ -433,12 +418,16 @@ def draw_panel(
             }
         )
 
-    observed_fit = continuous_segmented_fit(panel.observed, panel.age_group, segment_years)
+    observed_fit = independent_segmented_fit(panel.observed, panel.age_group, segment_years)
     if observed_fit is not None:
-        x = np.linspace(float(observed_fit["start"]), float(observed_fit["end"]), 400)
-        y = piecewise_predict(x, observed_fit["coefficients"], observed_fit["knots"])
-        label = f"{panel.group_label} segmented fit" if show_legend else None
-        ax.plot(x, y, color=OBSERVED_SEGMENTED_COLOR, linewidth=3.0, label=label)
+        label_used = False
+        for fit in observed_fit["segments"]:
+            if not fit["can_plot"]:
+                continue
+            x = np.array([float(fit["line_start"]), float(fit["line_end"])])
+            label = f"{panel.group_label} segmented fit" if show_legend and not label_used else None
+            ax.plot(x, float(fit["slope"]) * x + float(fit["intercept"]), color=OBSERVED_SEGMENTED_COLOR, linewidth=3.0, label=label)
+            label_used = True
         annotate_observed_segment_counts(ax, observed_fit)
 
     for fit in observed_fit["segments"] if observed_fit is not None else []:
@@ -448,7 +437,7 @@ def draw_panel(
                 "Sex": panel.sex,
                 "Age_Group": panel.age_group,
                 "Data": "Observed",
-                "Fit_Mode": "continuous_piecewise",
+                "Fit_Mode": "independent_segment",
                 "Segment_Years": segment_years,
                 "Segment_Start": fit["segment_start"],
                 "Segment_End": fit["segment_end"],
