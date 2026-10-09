@@ -98,6 +98,16 @@ python3 analyses/qq_plots/generate_qq_plots.py
 
 ## Notes
 
+Sample-specific residual age correction is available separately:
+
+```bash
+python3 analyses/sample_age_correction/correct.py
+```
+
+This produces `BrainAGE_S` and before/after diagnostics for each active group,
+sex, and age panel. See `analyses/sample_age_correction/README.md` for the
+method and interpretation. Existing BrainAGE GAP analyses retain their original inputs.
+
 - `plot.py` is a small wrapper so you can keep using the simple command.
 - `plot_brainage_ridges.py` contains the actual plotting logic.
 - Generated caches and macOS metadata files are ignored by git.
