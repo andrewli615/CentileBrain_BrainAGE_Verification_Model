@@ -128,3 +128,27 @@ are still preserved, and the samples are not age-matched. Training/reference
 controls are labeled explicitly: their independence from model training has not
 been established, so these are descriptive comparisons, not held-out validation.
 Existing bootstrap and permutation scripts continue using their original inputs.
+
+## Residual plotting style
+
+After correction of cohorts and controls, run:
+
+```bash
+python3 analyses/sample_age_correction/plot_residuals.py
+```
+
+This reuses the existing residual plot panel renderer, colors, segment-count
+annotations, axis styling, and independent 5- and 10-year segment regressions.
+The inputs are `BrainAGE_S` for both controls and ethnoracial participants.
+Each group gets combined figures and individual available sex/age-panel figures
+under `Residual plotting/<group>/sample_corrected/`, with segment-fit summaries
+and a plot-input checksum manifest. Raw PAD residual plots remain unchanged.
+Only available ethnoracial panels are drawn, matching the previous residual
+plot layout. The Training labels refer to corrected training/reference controls.
+
+Optional `--group-key self_chinese` selects one group; `--segment-years 5 10`
+sets the diagnostic segment widths. `--input-root` selects a correction output
+directory and `--output-root` selects the residual plot destination.
+Segmented lines diagnose local or nonlinear age patterns; they do not apply
+another correction. The global linear slope is effectively zero by construction,
+while slopes inside individual age segments can remain nonzero.
