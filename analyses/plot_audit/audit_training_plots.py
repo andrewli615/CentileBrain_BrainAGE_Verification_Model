@@ -171,17 +171,70 @@ def main():
             captured.clear()
     finally:
         Figure.savefig = original_savefig
-    # Chinese bucket plots: explicit raw-training main comparison and adjusted-control diagnostic.
+    # Independently reconstruct Chinese corrections and both plotted datasets.
     bucket_root = ROOT / "analyses/training_bucket_bias/outputs"
-    bucket_refs = {}
+    coefficients = pd.read_csv(bucket_root / "training_bucket_coefficients.csv")
+    manifest = json.loads((bucket_root / "run_manifest.json").read_text())
+    sources = {(s["Role"], s["Sex"], s["Age_Panel"]): Path(s["Path"]) for s in manifest["Sources"]}
+    cohort_summary = pd.read_csv(bucket_root / "cohort_summary.csv")
+    bucket_observed = {}
     for sex, panel in ridges.PANELS:
         d = pd.read_csv(bucket_root / "training_controls" / f"{sex}_{panel}/participants_training_bucket_adjusted.csv")
         d = d[d.Correction_Status.eq("corrected")]
         check("Bucket raw training source", d.Raw_BrainAGE, refs["raw"][(sex, panel)].residual)
         check("Bucket correction subtraction", d.BrainAGE_TrainingBucketAdjusted, d.Raw_BrainAGE - (d.Training_Slope_a*d.chronological_age+d.Training_Intercept_b))
-        bucket_refs[(sex, panel)] = pd.DataFrame(dict(age=d.chronological_age, residual=d.BrainAGE_TrainingBucketAdjusted))
-    for suffix, expected_refs in (("raw", refs["raw"]), ("training_bucket_adjusted", refs["raw"]), ("adjusted_controls_diagnostic", bucket_refs)):
-        verify_fits(pd.read_csv(bucket_root / f"{suffix}_segment_fit_summary.csv"), expected_refs, f"Chinese bucket {suffix}")
+        source = pd.read_csv(sources[("Chinese", sex, panel)])
+        exported = pd.read_csv(bucket_root / "self_chinese" / f"{sex}_{panel}/participants_training_bucket_adjusted.csv")
+        check("Chinese raw source prediction minus age", exported.Raw_BrainAGE, source.MR_predicted_age-source.chronological_age)
+        valid_age = source.chronological_age.between(5, 40) if panel == "5-40" else ((source.chronological_age > 40) & (source.chronological_age <= 90))
+        expected = np.full(len(source), np.nan)
+        training = refs["raw"][(sex, panel)]
+        for row in coefficients[(coefficients.Sex == sex) & (coefficients.Age_Panel == panel)].itertuples():
+            last = row.Bucket_End == style.AGE_LIMITS[panel][1]
+            train_mask = (training.age >= row.Bucket_Start) & ((training.age <= row.Bucket_End) if last else (training.age < row.Bucket_End))
+            local = training[train_mask]
+            check("Bucket coefficient training N", row.N_Training, len(local))
+            if row.Status != "fitted":
+                continue
+            fit = stats.linregress(local.age, local.residual)
+            check("Bucket coefficient raw training slope", row.Slope_a, fit.slope)
+            check("Bucket coefficient raw training intercept", row.Intercept_b, fit.intercept)
+            mask = valid_age & (source.chronological_age >= row.Bucket_Start) & ((source.chronological_age <= row.Bucket_End) if last else (source.chronological_age < row.Bucket_End))
+            expected[mask] = (source.MR_predicted_age-source.chronological_age)[mask] - (fit.slope*source.chronological_age[mask]+fit.intercept)
+        check("Chinese independently reconstructed adjustment", exported.BrainAGE_TrainingBucketAdjusted, expected)
+        check("Chinese corrected row selection", exported.Correction_Status.eq("corrected"), np.isfinite(expected))
+        eligible = exported[exported.Correction_Status.eq("corrected")]
+        summary = cohort_summary[(cohort_summary.Group == "Chinese") & (cohort_summary.Sex == sex) & (cohort_summary.Age_Panel == panel)].iloc[0]
+        check("Chinese corrected N", summary.N_Corrected, len(eligible))
+        check("Chinese adjusted MAE", summary.MAE_Adjusted, eligible.BrainAGE_TrainingBucketAdjusted.abs().mean())
+        bucket_observed[(sex, panel)] = eligible
+    for suffix, expected_refs in (("raw", refs["raw"]), ("training_bucket_adjusted", refs["raw"])):
+        table = pd.read_csv(bucket_root / f"{suffix}_segment_fit_summary.csv")
+        verify_fits(table, expected_refs, f"Chinese bucket {suffix}")
+        assert table.Training_Measure.eq("raw").all()
+        column = "Raw_BrainAGE" if suffix == "raw" else "BrainAGE_TrainingBucketAdjusted"
+        observed_refs = {pair: pd.DataFrame(dict(age=d.chronological_age, residual=d[column])) for pair, d in bucket_observed.items()}
+        observed_table = table[table.Data.eq("Observed")].copy()
+        observed_table["Data"] = "Training"
+        verify_fits(observed_table, observed_refs, f"Chinese observed {suffix}")
+        for sex, panel in ridges.PANELS:
+            plot_data = style.PlotData("self_chinese", "Chinese", sex, panel, expected_refs[(sex, panel)], observed_refs[(sex, panel)])
+            verify_panel(plot_data, manifest["Bucket_Width"])
+            fig, ax = plt.subplots()
+            try:
+                style.draw_panel(ax, plot_data, manifest["Bucket_Width"], show_legend=True)
+                check("Chinese renderer observed scatter", ax.collections[1].get_offsets(), plot_data.observed[["age", "residual"]])
+                fit = stats.linregress(plot_data.observed.age, plot_data.observed.residual)
+                line = next(line for line in ax.lines if line.get_color() == style.OBSERVED_LINEAR_COLOR)
+                check("Chinese renderer observed global line", line.get_ydata(), fit.slope*line.get_xdata()+fit.intercept)
+                segments = style.independent_segmented_fit(plot_data.observed, panel, manifest["Bucket_Width"])["segments"]
+                usable = [s for s in segments if s["can_plot"]]
+                lines = [line for line in ax.lines if line.get_color() == style.OBSERVED_SEGMENTED_COLOR]
+                check("Chinese renderer observed segment count", len(lines), len(usable))
+                for line, segment in zip(lines, usable):
+                    check("Chinese renderer observed segment", line.get_ydata(), segment["slope"]*line.get_xdata()+segment["intercept"])
+            finally:
+                plt.close(fig)
     # Inferential histogram inputs: these use the original adjusted reference, not BrainAGE_S.
     for kind, delta_column in (("bootstrap", "Bootstrap_Delta"), ("permutation", "Permutation_Delta")):
         directory = ROOT / "analyses/brainage_gap/outputs" / kind
@@ -212,7 +265,9 @@ def main():
                   No_Training_Figures=sum(not r['Training_Reference'] for r in inventory), Checks_Passed=len(checks),
                   Notes=["Training ridges use a Gaussian approximation; labels now explicitly say Gaussian fit.",
                          "BrainAGE_S global training slopes are zero by construction; local segments need not be flat.",
-                         "Bucket-adjustment main plot uses RAW training with ADJUSTED Chinese; diagnostic uses both adjusted.",
+                         "Bucket-adjustment plots use RAW training; Chinese plots show raw or training-bucket-adjusted values. Duplicate diagnostic removed.",
+                         "Chinese corrections, coefficients, observed regressions, MAEs, and renderer coordinates were checked against source predictions.",
+                         "The repository contains exported predictions, not the fitted CentileBrain prediction model; upstream inference cannot be reproduced here.",
                          "Bootstrap/permutation use original adjusted references, not BrainAGE_S.",
                          "Q-Q plots use a theoretical normal reference, not training controls.",
                          "Pixel images do not retain source coordinates; numerical verification uses saved summaries, source checksums, and current renderer artists."])

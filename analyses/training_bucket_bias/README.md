@@ -14,7 +14,7 @@ Chinese new BrainAGE = Chinese raw BrainAGE − (a × Chinese age + b)
 The coefficients are estimated only from training/reference controls. No
 Chinese slope or intercept is fitted for the correction. Chinese means and
 slopes can change, and need not become zero. Corrected training controls are
-exported and plotted for comparison; within each fitted bucket their means
+exported for comparison; within each fitted bucket their means
 and age slopes are zero by construction.
 
 ## Run
@@ -51,12 +51,33 @@ Plots use the previous residual renderer. The main adjusted figure overlays
 bias function that was subtracted, matching the earlier raw residual plots.
 Legend labels explicitly distinguish raw training from adjusted Chinese.
 This main figure compares different processing stages and must not be read as
-an adjusted-versus-adjusted control comparison. A separate
-`Chinese_adjusted_controls_diagnostic_10yr.png` shows both sides adjusted; its
-training bucket fits are flat at zero by construction. Segment summary tables
+an adjusted-versus-adjusted control comparison.
+All training lines in the plots are fitted to raw training BrainAGE. Segment summary tables
 record the training and Chinese processing stages.
 All original inputs and BrainAGE_S
 outputs remain unchanged.
+
+## File guide
+
+| File or folder in `outputs/` | Purpose |
+| --- | --- |
+| `Chinese_training_bucket_adjusted_10yr.png` | Main result: adjusted Chinese data with raw training fits. |
+| `Chinese_raw_10yr.png` | Before-adjustment comparison, with both datasets raw. |
+| `Chinese_final_MAE.xlsx` | Formatted final MAE report for review. |
+| `Chinese_final_MAE.csv` | Compact MAE table for scripts or import; same results as the workbook. |
+| `self_chinese/` | Participant-level corrected Chinese data for further analysis. |
+| `training_controls/` | Reference-control correction data used by the plot audit. |
+| `training_bucket_coefficients.csv` | Training slopes and intercepts defining the correction. |
+| `cohort_summary.csv` | Counts, means, MAEs, and standard deviations before and after correction. |
+| `bucket_summary.csv` | Counts and error summaries within each age bucket. |
+| `raw_segment_fit_summary.csv` | Numerical fits behind the raw plot. |
+| `training_bucket_adjusted_segment_fit_summary.csv` | Numerical fits behind the adjusted plot. |
+| `run_manifest.json` | Source paths, checksums, settings, and correction formula. |
+
+The duplicate `Chinese_adjusted_controls_diagnostic_10yr.png` and
+`adjusted_controls_diagnostic_segment_fit_summary.csv` were removed. Once
+training plots use raw values, they repeat the main adjusted comparison.
+The generator now produces only the raw and main adjusted comparisons.
 
 MAE is mean absolute adjusted gap, in years. Corrections may jump at bucket
 boundaries because regressions are fitted independently. These plots are

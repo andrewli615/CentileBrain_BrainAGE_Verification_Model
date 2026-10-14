@@ -123,7 +123,7 @@ def source_record(role, sex, panel, path):
 def run(output_root=DEFAULT_OUTPUT, width=10):
     output_root.mkdir(parents=True, exist_ok=True)
     all_fits, summaries, sources, bucket_summaries = [], [], [], []
-    before_panels, after_panels, diagnostic_panels = [], [], []
+    before_panels, after_panels = [], []
     for sex, panel in PANELS:
         key = "age1234" if panel == "5-40" else "age56789"
         training_path = ROOT / "training_data" / f"training_{key}_{sex.lower()}.csv"
@@ -165,8 +165,7 @@ def run(output_root=DEFAULT_OUTPUT, width=10):
             data.to_csv(directory / "participants_training_bucket_adjusted.csv", index=False)
         for training_column, chinese_column, panels in (
                 ("Raw_BrainAGE", "Raw_BrainAGE", before_panels),
-                ("Raw_BrainAGE", "BrainAGE_TrainingBucketAdjusted", after_panels),
-                ("BrainAGE_TrainingBucketAdjusted", "BrainAGE_TrainingBucketAdjusted", diagnostic_panels)):
+                ("Raw_BrainAGE", "BrainAGE_TrainingBucketAdjusted", after_panels)):
             panels.append(style.PlotData("self_chinese", "Chinese", sex, panel,
                                          plot_frame(corrected_training, training_column), plot_frame(corrected_chinese, chinese_column)))
         sources.extend([source_record("Training", sex, panel, training_path), source_record("Chinese", sex, panel, path)])
@@ -175,8 +174,7 @@ def run(output_root=DEFAULT_OUTPUT, width=10):
     pd.DataFrame(bucket_summaries).to_csv(output_root / "bucket_summary.csv", index=False)
     for panels, suffix, title, training_measure, chinese_measure in (
             (before_panels, "raw", "Chinese and controls: raw BrainAGE", "raw", "raw"),
-            (after_panels, "training_bucket_adjusted", "Adjusted Chinese BrainAGE with raw training reference", "raw", "adjusted"),
-            (diagnostic_panels, "adjusted_controls_diagnostic", "Diagnostic: both training controls and Chinese BrainAGE adjusted", "adjusted", "adjusted")):
+            (after_panels, "training_bucket_adjusted", "Adjusted Chinese BrainAGE with raw training reference", "raw", "adjusted")):
         rows = plot_panels(panels, f"{title} — {width}-year buckets", output_root / f"Chinese_{suffix}_{width}yr.png",
                            width, training_measure, chinese_measure)
         pd.DataFrame(rows).assign(Training_Measure=training_measure, Chinese_Measure=chinese_measure).to_csv(
