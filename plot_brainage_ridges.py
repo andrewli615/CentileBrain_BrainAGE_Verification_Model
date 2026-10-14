@@ -160,7 +160,7 @@ def draw_panel(ax, data: pd.DataFrame, sex: str, age_group: str, x_grid: np.ndar
 
     ax.set_title(f"{sex} {age_group}", fontsize=13, pad=10)
     ax.set_yticks([row_positions[label] for label in BRAINAGE_ROW_ORDER])
-    ax.set_yticklabels(BRAINAGE_ROW_ORDER)
+    ax.set_yticklabels(["Training\n(Gaussian fit)" if label == "Training" else label for label in BRAINAGE_ROW_ORDER])
     ax.set_ylim(-0.55, len(BRAINAGE_ROW_ORDER) - 0.1)
     ax.set_xlim(*X_LIMITS)
     ax.grid(axis="x", linestyle="--", alpha=0.22)

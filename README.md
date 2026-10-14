@@ -77,6 +77,9 @@ The smoothing and axis controls are near the top of `plot_brainage_ridges.py`:
 - `TRAINING_BANDWIDTH`
 - `DATASET_BANDWIDTH`
 
+Training ridges are Gaussian approximations using the reference mean and SD;
+their labels say "Gaussian fit". Ethnoracial ridges use kernel density estimates.
+
 ## BrainAGE GAP Analyses
 
 The independent two-sample analyses live in `analyses/brainage_gap/`:
@@ -97,6 +100,14 @@ python3 analyses/qq_plots/generate_qq_plots.py
 ```
 
 ## Notes
+
+Audit training inputs and fitted curves across the plot families:
+
+```bash
+python3 analyses/plot_audit/audit_training_plots.py
+```
+
+The report and figure inventory are saved under `analyses/plot_audit/outputs/`.
 
 Sample-specific residual age correction is available separately:
 

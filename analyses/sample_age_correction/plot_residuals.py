@@ -29,14 +29,42 @@ def residual_frame(path):
                          "residual": pd.to_numeric(frame["BrainAGE_S"])})
 
 
+def draw_corrected_panel(ax, panel, width, show_legend):
+    """Label the fitted global slope explicitly; retain local segmented fits."""
+    rows = style.draw_panel(ax, panel, width, show_legend=False)
+    training_slope = style.linear_fit(panel.training)[0]
+    observed_slope = style.linear_fit(panel.observed)[0]
+    for artist in ax.get_children():
+        label = artist.get_label() if hasattr(artist, "get_label") else None
+        if label == "Training":
+            artist.set_label("Training BrainAGE_S")
+        elif label == "Training linear fit":
+            slope_text = "≈0" if abs(training_slope) < 1e-10 else f"{training_slope:+.4f}"
+            artist.set_label(f"Training global fit (slope {slope_text})")
+            artist.set_linestyle("--")
+        elif label == f"{panel.group_label} linear fit":
+            slope_text = "≈0" if abs(observed_slope) < 1e-10 else f"{observed_slope:+.4f}"
+            artist.set_label(f"{panel.group_label} global fit (slope {slope_text})")
+    # The reused renderer labels segmented artists only when show_legend=True.
+    local_lines = [line for line in ax.lines if line.get_color() == style.TRAINING_SEGMENTED_COLOR]
+    if local_lines:
+        local_lines[0].set_label(f"Training local {width}-year fits")
+    local_lines = [line for line in ax.lines if line.get_color() == style.OBSERVED_SEGMENTED_COLOR]
+    if local_lines:
+        local_lines[0].set_label(f"{panel.group_label} local {width}-year fits")
+    ax.set_ylabel("BrainAGE_S (years)")
+    if show_legend:
+        ax.legend(loc="lower left", frameon=True, framealpha=.88, fontsize=8)
+    return rows
+
+
 def render(panels, label, width, directory):
     nrows, ncols, figsize = style.combined_plot_layout(len(panels))
     fig, axes = plt.subplots(nrows, ncols, figsize=figsize, constrained_layout=True)
     axes = np.atleast_1d(axes).ravel()
     rows = []
     for idx, (ax, panel) in enumerate(zip(axes, panels)):
-        rows.extend(style.draw_panel(ax, panel, width, show_legend=idx == 0))
-        ax.set_ylabel("BrainAGE_S (years)")
+        rows.extend(draw_corrected_panel(ax, panel, width, show_legend=idx == 0))
     for ax in axes[len(panels):]:
         ax.set_visible(False)
     fig.suptitle(f"{label}: linear and {width}-year segmented fits (BrainAGE_S)", fontsize=17)
@@ -44,8 +72,7 @@ def render(panels, label, width, directory):
     plt.close(fig)
     for panel in panels:
         fig, ax = plt.subplots(figsize=(7.3, 5.2), constrained_layout=True)
-        style.draw_panel(ax, panel, width, show_legend=True)
-        ax.set_ylabel("BrainAGE_S (years)")
+        draw_corrected_panel(ax, panel, width, show_legend=True)
         ax.set_title(f"{panel.sex}, {panel.age_group} — BrainAGE_S")
         fig.savefig(directory / f"{label}_{panel.sex}_{panel.age_group}_BrainAGE_S_segments_{width}yr.png", dpi=300)
         plt.close(fig)

@@ -1,0 +1,1288 @@
+{
+  "Figures": 318,
+  "Training_Reference_Figures": 238,
+  "No_Training_Figures": 80,
+  "Checks_Passed": 3700,
+  "Notes": [
+    "Training ridges use a Gaussian approximation; labels now explicitly say Gaussian fit.",
+    "BrainAGE_S global training slopes are zero by construction; local segments need not be flat.",
+    "Bucket-adjustment main plot uses RAW training with ADJUSTED Chinese; diagnostic uses both adjusted.",
+    "Bootstrap/permutation use original adjusted references, not BrainAGE_S.",
+    "Q-Q plots use a theoretical normal reference, not training controls.",
+    "Pixel images do not retain source coordinates; numerical verification uses saved summaries, source checksums, and current renderer artists."
+  ],
+  "Figure_Inventory": [
+    {
+      "Figure": "Residual plotting/Black/sample_corrected/Black_Female_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/sample_corrected/Black_Female_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/sample_corrected/Black_Male_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/sample_corrected/Black_Male_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/sample_corrected/Black_combined_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/sample_corrected/Black_combined_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/unadjusted/Black_Female_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/unadjusted/Black_Female_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/unadjusted/Black_Male_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/unadjusted/Black_Male_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/unadjusted/Black_combined_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Black/unadjusted/Black_combined_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/sample_corrected/Chilean_Female_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/sample_corrected/Chilean_Female_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/sample_corrected/Chilean_Male_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/sample_corrected/Chilean_Male_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/sample_corrected/Chilean_combined_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/sample_corrected/Chilean_combined_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/unadjusted/Chilean_Female_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/unadjusted/Chilean_Female_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/unadjusted/Chilean_Male_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/unadjusted/Chilean_Male_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/unadjusted/Chilean_combined_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chilean/unadjusted/Chilean_combined_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_Female_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_Female_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_Female_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_Female_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_Male_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_Male_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_Male_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_Male_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_combined_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/sample_corrected/Chinese_combined_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_Female_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_Female_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_Female_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_Female_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_Male_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_Male_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_Male_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_Male_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_combined_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Chinese/unadjusted/Chinese_combined_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_Female_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_Female_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_Female_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_Female_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_Male_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_Male_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_Male_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_Male_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_combined_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/sample_corrected/Japanese_combined_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_Female_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_Female_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_Female_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_Female_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_Male_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_Male_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_Male_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_Male_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_combined_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Japanese/unadjusted/Japanese_combined_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_Female_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_Female_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_Female_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_Female_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_Male_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_Male_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_Male_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_Male_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_combined_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/sample_corrected/Mexican_combined_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_Female_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_Female_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_Female_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_Female_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_Male_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_Male_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_Male_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_Male_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_combined_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Mexican/unadjusted/Mexican_combined_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_Female_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_Female_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_Female_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_Female_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_Male_40-90_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_Male_40-90_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_Male_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_Male_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_combined_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/sample_corrected/South Asian_combined_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_Female_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_Female_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_Female_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_Female_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_Male_40-90_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_Male_40-90_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_Male_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_Male_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_combined_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/South Asian/unadjusted/South Asian_combined_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/sample_corrected/Turkish_Female_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/sample_corrected/Turkish_Female_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/sample_corrected/Turkish_Male_5-40_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/sample_corrected/Turkish_Male_5-40_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/sample_corrected/Turkish_combined_BrainAGE_S_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/sample_corrected/Turkish_combined_BrainAGE_S_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/unadjusted/Turkish_Female_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/unadjusted/Turkish_Female_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/unadjusted/Turkish_Male_5-40_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/unadjusted/Turkish_Male_5-40_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/unadjusted/Turkish_combined_unadjusted_segments_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "Residual plotting/Turkish/unadjusted/Turkish_combined_unadjusted_segments_5yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Black/Black_Female_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Black/Black_Female_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Black/Black_Male_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Black/Black_Male_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chilean/Chilean_Female_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chilean/Chilean_Female_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chilean/Chilean_Male_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chilean/Chilean_Male_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chinese/Chinese_Female_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chinese/Chinese_Female_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chinese/Chinese_Female_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chinese/Chinese_Female_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chinese/Chinese_Male_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chinese/Chinese_Male_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chinese/Chinese_Male_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Chinese/Chinese_Male_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Japanese/Japanese_Female_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Japanese/Japanese_Female_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Japanese/Japanese_Female_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Japanese/Japanese_Female_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Japanese/Japanese_Male_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Japanese/Japanese_Male_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Japanese/Japanese_Male_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Japanese/Japanese_Male_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Mexican/Mexican_Female_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Mexican/Mexican_Female_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Mexican/Mexican_Female_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Mexican/Mexican_Female_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Mexican/Mexican_Male_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Mexican/Mexican_Male_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Mexican/Mexican_Male_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Mexican/Mexican_Male_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/South Asian/South Asian_Female_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/South Asian/South Asian_Female_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/South Asian/South Asian_Female_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/South Asian/South Asian_Female_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/South Asian/South Asian_Male_40-90_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/South Asian/South Asian_Male_40-90_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/South Asian/South Asian_Male_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/South Asian/South Asian_Male_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Turkish/Turkish_Female_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Turkish/Turkish_Female_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Turkish/Turkish_Male_5-40_BAG_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/bootstrap/Plots/Turkish/Turkish_Male_5-40_MAE_bootstrap_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Black/Black_Female_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Black/Black_Female_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Black/Black_Male_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Black/Black_Male_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chilean/Chilean_Female_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chilean/Chilean_Female_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chilean/Chilean_Male_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chilean/Chilean_Male_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chinese/Chinese_Female_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chinese/Chinese_Female_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chinese/Chinese_Female_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chinese/Chinese_Female_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chinese/Chinese_Male_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chinese/Chinese_Male_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chinese/Chinese_Male_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Chinese/Chinese_Male_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Japanese/Japanese_Female_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Japanese/Japanese_Female_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Japanese/Japanese_Female_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Japanese/Japanese_Female_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Japanese/Japanese_Male_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Japanese/Japanese_Male_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Japanese/Japanese_Male_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Japanese/Japanese_Male_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Mexican/Mexican_Female_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Mexican/Mexican_Female_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Mexican/Mexican_Female_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Mexican/Mexican_Female_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Mexican/Mexican_Male_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Mexican/Mexican_Male_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Mexican/Mexican_Male_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Mexican/Mexican_Male_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/South Asian/South Asian_Female_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/South Asian/South Asian_Female_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/South Asian/South Asian_Female_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/South Asian/South Asian_Female_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/South Asian/South Asian_Male_40-90_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/South Asian/South Asian_Male_40-90_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/South Asian/South Asian_Male_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/South Asian/South Asian_Male_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Turkish/Turkish_Female_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Turkish/Turkish_Female_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Turkish/Turkish_Male_5-40_BAG_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/brainage_gap/outputs/permutation/Plots/Turkish/Turkish_Male_5-40_MAE_permutation_histogram.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Black/Black_Female_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Black/Black_Male_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Chilean/Chilean_Female_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Chilean/Chilean_Male_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Chinese/Chinese_Female_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Chinese/Chinese_Female_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Chinese/Chinese_Male_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Chinese/Chinese_Male_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Japanese/Japanese_Female_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Japanese/Japanese_Female_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Japanese/Japanese_Male_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Japanese/Japanese_Male_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Mexican/Mexican_Female_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Mexican/Mexican_Female_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Mexican/Mexican_Male_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Mexican/Mexican_Male_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/South_Asian/South_Asian_Female_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/South_Asian/South_Asian_Female_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/South_Asian/South_Asian_Male_40-90_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/South_Asian/South_Asian_Male_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Turkish/Turkish_Female_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/qq_plots/outputs/Turkish/Turkish_Male_5-40_adjusted_qq.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_all_BrainAGE_S_vs_controls_ridgelines.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_black_original_adjusted_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_black_sample_corrected_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_chilean_original_adjusted_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_chilean_sample_corrected_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_chinese_original_adjusted_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_chinese_sample_corrected_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_female_BrainAGE_S_vs_controls_ridgelines.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_japanese_original_adjusted_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_japanese_sample_corrected_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_male_BrainAGE_S_vs_controls_ridgelines.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_mexican_original_adjusted_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_mexican_sample_corrected_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_southasian_original_adjusted_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_southasian_sample_corrected_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_turkish_original_adjusted_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/control_comparisons/self_turkish_sample_corrected_age_vs_controls.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_black_age.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_black_distribution.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_chilean_age.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_chilean_distribution.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_chinese_age.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_chinese_distribution.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_japanese_age.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_japanese_distribution.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_mexican_age.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_mexican_distribution.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_southasian_age.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_southasian_distribution.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_turkish_age.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/group_figures/self_turkish_distribution.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_black/Female_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_black/Female_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_black/Male_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_black/Male_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chilean/Female_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chilean/Female_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chilean/Male_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chilean/Male_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chinese/Female_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chinese/Female_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chinese/Female_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chinese/Female_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chinese/Male_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chinese/Male_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chinese/Male_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_chinese/Male_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_japanese/Female_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_japanese/Female_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_japanese/Female_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_japanese/Female_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_japanese/Male_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_japanese/Male_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_japanese/Male_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_japanese/Male_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_mexican/Female_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_mexican/Female_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_mexican/Female_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_mexican/Female_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_mexican/Male_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_mexican/Male_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_mexican/Male_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_mexican/Male_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_southasian/Female_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_southasian/Female_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_southasian/Female_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_southasian/Female_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_southasian/Male_40-90/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_southasian/Male_40-90/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_southasian/Male_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_southasian/Male_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_turkish/Female_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_turkish/Female_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_turkish/Male_5-40/age_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/self_turkish/Male_5-40/distribution_before_after.png",
+      "Training_Reference": false
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/training_controls/Female_40-90/age_before_after.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/training_controls/Female_40-90/distribution_before_after.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/training_controls/Female_5-40/age_before_after.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/training_controls/Female_5-40/distribution_before_after.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/training_controls/Male_40-90/age_before_after.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/training_controls/Male_40-90/distribution_before_after.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/training_controls/Male_5-40/age_before_after.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/sample_age_correction/outputs/training_controls/Male_5-40/distribution_before_after.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/training_bucket_bias/outputs/Chinese_adjusted_controls_diagnostic_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/training_bucket_bias/outputs/Chinese_raw_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "analyses/training_bucket_bias/outputs/Chinese_training_bucket_adjusted_10yr.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "graph_outputs/self_adjusted_brainage_ridgelines.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "graph_outputs/self_female_adjusted_brainage_ridgelines.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "graph_outputs/self_female_unadjusted_brainage_ridgelines.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "graph_outputs/self_male_adjusted_brainage_ridgelines.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "graph_outputs/self_male_unadjusted_brainage_ridgelines.png",
+      "Training_Reference": true
+    },
+    {
+      "Figure": "graph_outputs/self_unadjusted_brainage_ridgelines.png",
+      "Training_Reference": true
+    }
+  ]
+}

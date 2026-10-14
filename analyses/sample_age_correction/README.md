@@ -59,6 +59,10 @@ formula rather than copying the document's R script.
   slope before correction, its two-sided Student-t 95% interval and p-value,
   slope after correction, and before/after mean, sample SD, and mean absolute
   BrainAGE. Statistics use eligible rows only.
+  Group and status columns come first, followed by counts, age coverage, slope
+  diagnostics, and paired before/after statistics. Control and ethnoracial
+  summaries share this column order. Source timestamps, file paths, and checksums
+  are retained only in the separate manifests, not in the summary tables.
 - `<dataset>/<sex>_<panel>/participants_BrainAGE_S.csv`: original fields and
   identifiers, plus `eligible`, `exclusion_reason`, `correction_status`,
   `age_centered`, `residual_age_effect`, and `BrainAGE_S`. Excluded rows retain
@@ -152,3 +156,22 @@ directory and `--output-root` selects the residual plot destination.
 Segmented lines diagnose local or nonlinear age patterns; they do not apply
 another correction. The global linear slope is effectively zero by construction,
 while slopes inside individual age segments can remain nonzero.
+The corrected plot legends label the training global slope explicitly and use
+a dashed training global line to distinguish it from the local segmented fits.
+An approximately flat global fit is expected for these sample-corrected inputs.
+
+## Mean absolute BrainAGE_S
+
+```bash
+python3 analyses/sample_age_correction/summarize_mae.py
+```
+
+This writes `outputs/brainage_s_mae_summary.csv`, with one row per corrected
+group/sex/age-panel combination, sample size, mean absolute original adjusted
+BrainAGE, mean absolute BrainAGE_S, and the change (new minus original). Values
+retain full precision. `outputs/brainage_s_mae_table.md` is the same corrected
+MAE measure displayed to two decimal places, with separate sex/age columns.
+Missing cohorts are blank rather than assigned an error of zero. The four
+training/reference panels are included. MAE here is `mean(abs(BrainAGE_S))`;
+these corrected in-sample gaps are descriptive, not independent prediction
+validation metrics.

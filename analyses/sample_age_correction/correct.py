@@ -22,6 +22,20 @@ from brainage_dataset_config import BRAINAGE_DATASETS, age_panel_rows
 PANELS = [(sex, panel) for sex in ("Female", "Male") for panel in ("5-40", "40-90")]
 DEFAULT_OUTPUT = Path(__file__).resolve().parent / "outputs"
 
+SUMMARY_COLUMNS = [
+    "Dataset", "Group", "Sex", "Age_Panel", "Status", "Reason",
+    "N_Input", "N_Eligible", "N_Excluded", "N_Unique_Ages",
+    "Age_Min", "Age_Max", "Mean_Age",
+    "Slope_Before", "Slope_CI95_Lower", "Slope_CI95_Upper", "Slope_P", "Slope_After",
+    "Mean_Before", "Mean_After", "Mean_Change", "SD_Before", "SD_After",
+    "Mean_Absolute_Before", "Mean_Absolute_After",
+]
+
+
+def summary_table(rows):
+    """Keep analysis columns ordered; source provenance belongs in manifests."""
+    return pd.DataFrame(rows).reindex(columns=SUMMARY_COLUMNS)
+
 
 def discover(input_root):
     """Account for every configured panel, including absent input files."""
@@ -151,7 +165,7 @@ def run(input_root, output_root):
         summaries.append(summary)
         manifest.append({**identity, **metadata, "Status": summary["Status"],
                          "Participant_File": str(destination.resolve())})
-    pd.DataFrame(summaries).to_csv(output_root / "cohort_summary.csv", index=False)
+    summary_table(summaries).to_csv(output_root / "cohort_summary.csv", index=False)
     (output_root / "run_manifest.json").write_text(json.dumps({
         "Run_Time_UTC": datetime.now(timezone.utc).isoformat(),
         "Method": "OLS with intercept; subtract slope times eligible-cohort centered age",

@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from correct import ROOT, DEFAULT_OUTPUT, correct_frame, plot_cohort, plt
+from correct import ROOT, DEFAULT_OUTPUT, correct_frame, plot_cohort, plt, summary_table
 from brainage_dataset_config import BRAINAGE_DATASETS
 import plot_brainage_ridges as ridges
 
@@ -80,7 +80,7 @@ def run(output_root=DEFAULT_OUTPUT, training_root=ROOT / "training_data"):
         metadata = dict(Source_Path=str(source_path.resolve()),
                         Source_Mtime_UTC=datetime.fromtimestamp(source_path.stat().st_mtime, timezone.utc).isoformat(),
                         Source_SHA256=hashlib.sha256(source_path.read_bytes()).hexdigest())
-        summaries.append(dict(Group="Training/reference controls", Sex=sex, Age_Panel=panel,
+        summaries.append(dict(Dataset="training_controls", Group="Training/reference controls", Sex=sex, Age_Panel=panel,
                               **summary, **metadata))
         provenance.append(dict(Sex=sex, Age_Panel=panel, **metadata,
                                Participant_File=str(destination.resolve())))
@@ -89,7 +89,7 @@ def run(output_root=DEFAULT_OUTPUT, training_root=ROOT / "training_data"):
         controls[(sex, panel)] = eligible
         plot_data.append(pd.DataFrame(dict(dataset="Training", sex=sex, age_group=panel,
                                             BrainAGE=eligible.BrainAGE_S)))
-    pd.DataFrame(summaries).to_csv(output_root / "training_controls" / "cohort_summary.csv", index=False)
+    summary_table(summaries).to_csv(output_root / "training_controls" / "cohort_summary.csv", index=False)
     comparison_root = output_root / "control_comparisons"
     comparison_root.mkdir(exist_ok=True)
     # Only use cohorts listed by the current correction manifest, not stale files.
