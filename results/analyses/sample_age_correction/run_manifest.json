@@ -1,0 +1,292 @@
+{
+  "Run_Time_UTC": "2026-10-09T04:34:01.079079+00:00",
+  "Method": "OLS with intercept; subtract slope times eligible-cohort centered age",
+  "Correction_Gate": "all eligible cohorts regardless of p-value",
+  "Input_Root": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs",
+  "Cohorts": [
+    {
+      "Dataset": "self_black",
+      "Group": "Black",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Status": "missing_input"
+    },
+    {
+      "Dataset": "self_black",
+      "Group": "Black",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_black/Female_40-90/output_file_2026-06-29-00-57-30_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.468925+00:00",
+      "Source_SHA256": "4050019fdcfd07951b79f2cfcb657ec7d29b1529ffabba1b53ed4e5d6e2f6c72",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_black/Female_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_black",
+      "Group": "Black",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Status": "missing_input"
+    },
+    {
+      "Dataset": "self_black",
+      "Group": "Black",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_black/Male_40-90/output_file_2026-06-29-01-00-41_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.475828+00:00",
+      "Source_SHA256": "3237eb055ec9d3474a58fb9f0ef19cc324d6f12272dacde8c9160bc4d23316cf",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_black/Male_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_chilean",
+      "Group": "Chilean",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chilean/Female_5-40/output_file_2026-06-29-01-02-15_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.482481+00:00",
+      "Source_SHA256": "d147825136a346f78d716f9487f6c379e8173060d9224280d85017184cdf3519",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_chilean/Female_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_chilean",
+      "Group": "Chilean",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Status": "missing_input"
+    },
+    {
+      "Dataset": "self_chilean",
+      "Group": "Chilean",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chilean/Male_5-40/output_file_2026-06-29-01-03-22_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.487608+00:00",
+      "Source_SHA256": "88243bedc7c77f512a3a3331586111b8dc167660d2c5cbf2d1f3b812aa51eaa2",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_chilean/Male_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_chilean",
+      "Group": "Chilean",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Status": "missing_input"
+    },
+    {
+      "Dataset": "self_chinese",
+      "Group": "Chinese",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chinese/Female_5-40/output_file_2026-08-19-00-06-48_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-08-19T00:08:08.289075+00:00",
+      "Source_SHA256": "0e4dff755850ffbf24b13ca3d7b1ccdd4d857e750b971d2c32f199d983e4aed0",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_chinese/Female_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_chinese",
+      "Group": "Chinese",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chinese/Female_40-90/output_file_2026-08-19-00-08-18_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-08-19T00:09:37.023995+00:00",
+      "Source_SHA256": "8d8fce18fdc3ca8fee58f3d7647985091525b02d0157107fdef0924b99e2a582",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_chinese/Female_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_chinese",
+      "Group": "Chinese",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chinese/Male_5-40/output_file_2026-08-19-00-31-35_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-08-19T00:43:24.743167+00:00",
+      "Source_SHA256": "d599dbc9cbf64a0366bdc2a820ec89d7570bc684bc572735dd02e35fe73bed28",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_chinese/Male_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_chinese",
+      "Group": "Chinese",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chinese/Male_40-90/output_file_2026-08-19-00-04-54_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-08-19T00:06:47.267492+00:00",
+      "Source_SHA256": "fd8532887c62db041fe7d3d0cd6d10dbcaf20d4fa75c642927e0cc523856e660",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_chinese/Male_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_japanese",
+      "Group": "Japanese",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_japanese/Female_5-40/output_file_2026-08-18-20-49-44_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-08-27T22:28:20.615242+00:00",
+      "Source_SHA256": "e6d0b0399faf2de93f7d032120b5adde277bb9db4aabb7fd2404f6d31c2bdf00",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_japanese/Female_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_japanese",
+      "Group": "Japanese",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_japanese/Female_40-90/output_file_2026-08-18-20-50-22_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-08-27T22:28:20.679958+00:00",
+      "Source_SHA256": "e25a7fb7df44eb1ce94acdd2df1a886444093723396f442f797320043bd82a82",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_japanese/Female_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_japanese",
+      "Group": "Japanese",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_japanese/Male_5-40/output_file_2026-08-18-20-50-58_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-08-27T22:28:20.800514+00:00",
+      "Source_SHA256": "d94f6fcdc5cbd4d7f084df073880be60b83f691a12503b6b756b49ee6d37c701",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_japanese/Male_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_japanese",
+      "Group": "Japanese",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_japanese/Male_40-90/output_file_2026-08-18-20-51-44_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-08-27T22:28:20.847720+00:00",
+      "Source_SHA256": "f592babef851b9040387c81ae1f69a3f4d9651f67ea2adf65cb7a9866cbf31e0",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_japanese/Male_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_mexican",
+      "Group": "Mexican",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_mexican/Female_5-40/output_file_2026-08-18-20-44-55_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-08-27T22:28:20.889852+00:00",
+      "Source_SHA256": "b35b4d0a994424627d626263cdbc30d765dcfd8057b08d99127be8dfdc21cce4",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_mexican/Female_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_mexican",
+      "Group": "Mexican",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_mexican/Female_40-90/output_file_2026-08-18-20-47-24_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-08-27T22:28:20.906347+00:00",
+      "Source_SHA256": "eefaafddf162fbd28fdbb2f51d17be5a2668559cc692ece9208c7a2b466914c1",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_mexican/Female_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_mexican",
+      "Group": "Mexican",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_mexican/Male_5-40/output_file_2026-08-18-20-48-01_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-08-27T22:28:20.960092+00:00",
+      "Source_SHA256": "4bfc4abd683ef2f681d198fc4e86ebbfaf99d38831948c5413ebfe32c0eef9a8",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_mexican/Male_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_mexican",
+      "Group": "Mexican",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_mexican/Male_40-90/output_file_2026-08-18-20-48-57_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-08-27T22:28:20.971485+00:00",
+      "Source_SHA256": "b74bbf38585be692f89dd149d8ca7670d4a5e49e0fb0d8eaa810369c6392bd9a",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_mexican/Male_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_southasian",
+      "Group": "South Asian",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_southasian/Female_5-40/output_file_2026-06-29-01-11-24_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.545560+00:00",
+      "Source_SHA256": "cbf9af40957671b991c25b8adc525cbc4871006bbba1c308767437528d75f989",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_southasian/Female_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_southasian",
+      "Group": "South Asian",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_southasian/Female_40-90/output_file_2026-06-29-01-12-05_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.540288+00:00",
+      "Source_SHA256": "76d0cf499a4d0f3c066e1b4574231a66ac643bb2272f1685cf61ea0fca1d9d67",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_southasian/Female_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_southasian",
+      "Group": "South Asian",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_southasian/Male_5-40/output_file_2026-06-29-01-12-41_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.557140+00:00",
+      "Source_SHA256": "6c70803c5e0fcc044bdc12e0f4d71ae380e4b313f3ec9d4a2660ed638f54b9ac",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_southasian/Male_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_southasian",
+      "Group": "South Asian",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_southasian/Male_40-90/output_file_2026-06-29-01-13-11_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.551218+00:00",
+      "Source_SHA256": "4754eb3a6e0a5451a8f1ef69f32d2f84ad865cd6cbec7999e67c2c37f03566a9",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_southasian/Male_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_turkish",
+      "Group": "Turkish",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_turkish/Female_5-40/output_file_2026-06-29-01-19-43_Adjusted_BrainAGE_female.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.562631+00:00",
+      "Source_SHA256": "ef2a1343ab9fdc271bab8356ae0aefe43e52b9ad55183449a2031a29b99e83c7",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_turkish/Female_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_turkish",
+      "Group": "Turkish",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Status": "missing_input"
+    },
+    {
+      "Dataset": "self_turkish",
+      "Group": "Turkish",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_turkish/Male_5-40/output_file_2026-06-29-01-20-21_Adjusted_BrainAGE_male.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:11:13.570931+00:00",
+      "Source_SHA256": "8ab05b7042544a409944d4e781594bb4fb8df29bcd6ccf6a5023064e2db6dd67",
+      "Status": "corrected",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_turkish/Male_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Dataset": "self_turkish",
+      "Group": "Turkish",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Status": "missing_input"
+    }
+  ]
+}

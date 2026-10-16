@@ -1,0 +1,67 @@
+{
+  "Run_Time_UTC": "2026-10-16T05:14:44.851221+00:00",
+  "Bucket_Width": 10,
+  "Formula": "Raw CentileBrain BAG - (training slope a * chronological age + training intercept b)",
+  "Training_Outcome": "Raw CentileBrain BAG = predicted brain age - chronological age",
+  "Sources": [
+    {
+      "Role": "Training",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/training_data/training_age1234_female.csv",
+      "SHA256": "dc1e4538bd987a97e5b9a3fd6f54626bffe1659359951908b77703276f8520cb"
+    },
+    {
+      "Role": "Chinese",
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chinese/Female_5-40/output_file_2026-08-19-00-06-48_MR_predicted_age_female.csv",
+      "SHA256": "e080eee136810c220d8a6701e9e7b148bf6c207cae490752eb6f5f4efc72dcc9"
+    },
+    {
+      "Role": "Training",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/training_data/training_age56789_female.csv",
+      "SHA256": "6b344ea87f624eb0776780e7aacce6174ef4f204ac4a518d08fbf4fc138de6ba"
+    },
+    {
+      "Role": "Chinese",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chinese/Female_40-90/output_file_2026-08-19-00-08-18_MR_predicted_age_female.csv",
+      "SHA256": "ef3c4c59174ba6e9294675333a0664892ff755e83b9cd47f8d3dc952b29a8685"
+    },
+    {
+      "Role": "Training",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/training_data/training_age1234_male.csv",
+      "SHA256": "4b5cb05c8b3044c6074aa8dc363e6526776bef111d0b0438ea6bb6ad415cd140"
+    },
+    {
+      "Role": "Chinese",
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chinese/Male_5-40/output_file_2026-08-19-00-31-35_MR_predicted_age_male.csv",
+      "SHA256": "b1733f225c315130346e0ac5798e7e1365efa1cf3ab958726e195efa3b769d0b"
+    },
+    {
+      "Role": "Training",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/training_data/training_age56789_male.csv",
+      "SHA256": "2917caf63c6ffb40e29e29414252bd2a2fa3a198066c7b087b824248e1079b66"
+    },
+    {
+      "Role": "Chinese",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/ethnoracial_data_outputs/self_chinese/Male_40-90/output_file_2026-08-19-00-04-54_MR_predicted_age_male.csv",
+      "SHA256": "02cf7342c05191c5c7a2fbfa36c97c0d92a5eef7b4a554a5d9f84c1c90790850"
+    }
+  ],
+  "Main_Plot_Training_Measure": "Raw CentileBrain BAG; its training regression is used for correction",
+  "Main_Plot_Chinese_Measure": "Training-reference bucket-adjusted BAG (BrainAGE_TrainingBucketAdjusted)",
+  "Age_Boundaries": "5<=age<=40; 40<age<=90; internal buckets left-closed/right-open; final endpoint included"
+}

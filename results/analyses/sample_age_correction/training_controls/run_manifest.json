@@ -1,0 +1,41 @@
+{
+  "Run_Time_UTC": "2026-10-09T17:54:26.936974+00:00",
+  "Method": "Separate controls-only OLS correction per sex and age panel; own mean age and slope",
+  "Identifier_Note": "Source files lack IDs and site labels; source_row is a provenance label only",
+  "Controls": [
+    {
+      "Sex": "Female",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/training_data/training_age1234_female.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:23:17.371995+00:00",
+      "Source_SHA256": "dc1e4538bd987a97e5b9a3fd6f54626bffe1659359951908b77703276f8520cb",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/training_controls/Female_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/training_data/training_age56789_female.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:23:17.369059+00:00",
+      "Source_SHA256": "6b344ea87f624eb0776780e7aacce6174ef4f204ac4a518d08fbf4fc138de6ba",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/training_controls/Female_40-90/participants_BrainAGE_S.csv"
+    },
+    {
+      "Sex": "Male",
+      "Age_Panel": "5-40",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/training_data/training_age1234_male.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:23:17.367107+00:00",
+      "Source_SHA256": "4b5cb05c8b3044c6074aa8dc363e6526776bef111d0b0438ea6bb6ad415cd140",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/training_controls/Male_5-40/participants_BrainAGE_S.csv"
+    },
+    {
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Source_Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/training_data/training_age56789_male.csv",
+      "Source_Mtime_UTC": "2026-07-03T00:23:17.370438+00:00",
+      "Source_SHA256": "2917caf63c6ffb40e29e29414252bd2a2fa3a198066c7b087b824248e1079b66",
+      "Participant_File": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/training_controls/Male_40-90/participants_BrainAGE_S.csv"
+    }
+  ],
+  "Cohort_Manifest": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/run_manifest.json",
+  "Cohort_Manifest_SHA256": "b7a91e018e1a8aca49158119ff63e2dc1337e04a589a770893ed99419b030de3"
+}

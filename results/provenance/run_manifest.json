@@ -1,0 +1,27 @@
+{
+  "Created_UTC": "2026-10-16T08:19:50.584461+00:00",
+  "Methods": {
+    "Raw_BrainAGE": "Raw CentileBrain BAG",
+    "CentileBrain_Adjusted": "CentileBrain panel-adjusted BAG",
+    "Training_10yr": "Training-reference 10-year bucket-adjusted BAG",
+    "Training_5yr": "Training-reference 5-year bucket-adjusted BAG",
+    "BrainAGE_S": "BrainAGE_S (cohort age-trend adjusted BAG)"
+  },
+  "Population": "Common eligible participants across all five methods per group/sex/age panel",
+  "Raw_CentileBrain_BAG": "CentileBrain predicted brain age - chronological age; no adjustment",
+  "CentileBrain_Panel_Adjustment": "Supplied Adjusted_BrainAGE, with CentileBrain's separate sex-by-age-panel linear adjustment",
+  "Training_Bucket_Adjustment": "Raw CentileBrain BAG - (sex/panel training-bin slope * chronological_age + intercept)",
+  "Formula": "Training-reference W-year bucket-adjusted BAG = raw CentileBrain BAG - fitted training raw-BAG trend within the W-year bin",
+  "BrainAGE_S": "CentileBrain panel-adjusted BAG - own eligible cohort slope * (age - own eligible cohort mean age)",
+  "Age_Panels": "5 <= age <= 40; 40 < age <= 90",
+  "Segment_Years": [
+    5,
+    10
+  ],
+  "Training_Minimum_N": 3,
+  "Training_Minimum_Distinct_Ages": 2,
+  "Extrapolation": "Apply the fitted regression within its bin; flag ages outside training observed support",
+  "Unfit_Bin": "Leave correction unavailable; retain participant and reason",
+  "Source_Catalog": "results/provenance/source_catalog.json",
+  "Inference": "Descriptive gaps; model training independence and upstream MRI inference are unverified"
+}

@@ -1,0 +1,39 @@
+{
+  "Run_Time_UTC": "2026-10-14T19:02:30.654400+00:00",
+  "Measure": "BrainAGE_S",
+  "Segment_Years": [
+    5,
+    10
+  ],
+  "Sources": [
+    {
+      "Role": "Training",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/training_controls/Female_40-90/participants_BrainAGE_S.csv",
+      "SHA256": "2074d467ff36ad9871eb9a2fc96c2a1c4134ffc1c4cbe0c86d71adba5fb4450e"
+    },
+    {
+      "Role": "Observed",
+      "Sex": "Female",
+      "Age_Panel": "40-90",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_black/Female_40-90/participants_BrainAGE_S.csv",
+      "SHA256": "645cf21a282cad2967b91a27267e1efd6ec685f725385b3e597368431934517b"
+    },
+    {
+      "Role": "Training",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/training_controls/Male_40-90/participants_BrainAGE_S.csv",
+      "SHA256": "5b9a5b61a67acdd84e9cdc6ccc366a6b72aaf9520ef32d477d9c0502843e72b8"
+    },
+    {
+      "Role": "Observed",
+      "Sex": "Male",
+      "Age_Panel": "40-90",
+      "Path": "/Users/andrewli/Documents/Frangou Lab/BrainAGE/CentileBrain_BrainAGE/results/analyses/sample_age_correction/self_black/Male_40-90/participants_BrainAGE_S.csv",
+      "SHA256": "2f54848adc7c927c1c056498321f7b248a4e0b67b637ea47fa6328fff32d5191"
+    }
+  ],
+  "Note": "Segment fits are descriptive diagnostics; no additional segmented correction is applied."
+}

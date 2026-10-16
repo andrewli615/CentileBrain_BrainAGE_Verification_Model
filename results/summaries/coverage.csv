@@ -1,0 +1,29 @@
+Dataset,Group,Sex,Age_Panel,Status,N_Input,N_Matched,N_Invalid_Age,N_Unmatched_Source,N_Raw_BrainAGE,N_CentileBrain_Adjusted,N_Training_10yr,N_Training_5yr,N_BrainAGE_S,Outside_Training_Support_5yr,Outside_Training_Support_10yr
+self_black,Black,Female,5-40,missing_panel,0,0,,,,,,,,,
+self_black,Black,Female,40-90,available,159,159,0,0,159,159,159,159,159,0,0
+self_black,Black,Male,5-40,missing_panel,0,0,,,,,,,,,
+self_black,Black,Male,40-90,available,125,125,0,0,125,125,125,125,125,0,0
+self_chilean,Chilean,Female,5-40,available,27,27,0,0,27,27,27,27,27,0,0
+self_chilean,Chilean,Female,40-90,missing_panel,0,0,,,,,,,,,
+self_chilean,Chilean,Male,5-40,available,56,56,0,0,56,56,56,56,56,0,0
+self_chilean,Chilean,Male,40-90,missing_panel,0,0,,,,,,,,,
+self_chinese,Chinese,Female,5-40,available,547,547,0,0,547,547,547,547,547,0,0
+self_chinese,Chinese,Female,40-90,available,326,324,2,0,324,324,324,324,324,0,0
+self_chinese,Chinese,Male,5-40,available,418,418,0,0,418,418,418,418,418,0,0
+self_chinese,Chinese,Male,40-90,available,198,194,4,0,194,194,194,194,194,0,0
+self_japanese,Japanese,Female,5-40,available,216,216,0,0,216,216,216,216,216,0,0
+self_japanese,Japanese,Female,40-90,available,187,187,0,0,187,187,187,187,187,0,0
+self_japanese,Japanese,Male,5-40,available,389,389,0,0,389,389,389,389,389,0,0
+self_japanese,Japanese,Male,40-90,available,128,128,0,0,128,128,128,128,128,0,0
+self_mexican,Mexican,Female,5-40,available,106,106,0,0,106,106,106,106,106,0,0
+self_mexican,Mexican,Female,40-90,available,31,31,0,0,31,31,31,31,31,0,0
+self_mexican,Mexican,Male,5-40,available,164,164,0,0,164,164,164,164,164,0,0
+self_mexican,Mexican,Male,40-90,available,13,13,0,0,13,13,13,13,13,0,0
+self_southasian,South Asian,Female,5-40,available,16,16,0,0,16,16,16,16,16,0,0
+self_southasian,South Asian,Female,40-90,available,144,144,0,0,144,144,144,144,144,0,0
+self_southasian,South Asian,Male,5-40,available,21,21,0,0,21,21,21,21,21,0,0
+self_southasian,South Asian,Male,40-90,available,238,238,0,0,238,238,238,238,238,0,0
+self_turkish,Turkish,Female,5-40,available,268,268,0,0,268,268,268,268,268,0,0
+self_turkish,Turkish,Female,40-90,missing_panel,0,0,,,,,,,,,
+self_turkish,Turkish,Male,5-40,available,154,154,0,0,154,154,154,154,154,0,0
+self_turkish,Turkish,Male,40-90,missing_panel,0,0,,,,,,,,,
